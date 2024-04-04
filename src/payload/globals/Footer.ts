@@ -9,6 +9,25 @@ export const Footer: GlobalConfig = {
   },
   fields: [
     {
+      name: 'copyright',
+      label: 'Copyright',
+      type: 'text',
+    },
+    {
+      name: 'Categories',
+      type: 'relationship',
+      relationTo: 'categories',
+      hasMany: true,
+      required: true,
+      filterOptions: ({ id }) => {
+        return {
+          id: {
+            not_in: [id],
+          },
+        }
+      },
+    },
+    {
       name: 'navItems',
       type: 'array',
       maxRows: 6,

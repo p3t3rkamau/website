@@ -70,6 +70,8 @@
 
 .image {
   object-fit: cover;
+  
+
 }
 
 .placeholder {
@@ -83,4 +85,155 @@
 
 .caption {
   color: var(--theme-elevation-500);
+}
+/* Style for the additional data section */
+.additional-data {
+  margin-top: 20px;
+}
+
+/* Style for the accordion button */
+button.accordion {
+  background-color: #e6d0d0;
+  color: black;
+  cursor: pointer;
+  padding: 20px;
+  margin: 2px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Style for the active accordion button */
+button.accordion.active {
+  background-color: #ccc;
+}
+
+/* Style for the accordion content */
+button.accordion + div {
+  display: none;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+/* Style for the active accordion content */
+button.accordion.active + div {
+  display: block;
+}
+
+/* Style for the headings in the additional data section */
+.additional-data h2 {
+  font-size: 18px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+/* Style for the description in the additional data section */
+.additional-data p {
+  margin-bottom: 15px;
+}
+
+/* Style for the list items in the additional data section */
+.additional-data ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Style for the list item titles in the additional data section */
+.additional-data ul li h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+/* Style for the list item descriptions in the additional data section */
+.additional-data ul li p {
+  margin-bottom: 10px;
+}
+
+/* Style for the price and days */
+.additional-data .price-days {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+.imageHighlight{
+  text-align: center;
+}
+.imageWrapper {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 200px;
+  min-height: 300px;
+  max-height: 200px;
+  overflow: hidden;
+  object-fit: cover;
+  border: 2px solid white;
+  border-radius: 5px;
+  @include mid-break {
+    max-width: 180px;
+    min-height: 250px;
+    max-height: 250px;
+    gap: 5px;
+  }
+
+  @include small-break {
+    max-width: 180px;
+    min-height: 160px;
+    max-height: 160px;
+    gap: 5px;
+  }
+}
+.priceFlex{
+  display: flex;
+  width: 100%;
+  margin-top: 10px;
+  align-items: flex-start;
+  justify-content: space-around;
+  margin: 20p;
+  padding:0 20px 0 20px;
+  color: #333; 
+  background-color: rgb(189, 190, 131);
+}
+.images li {
+  margin-right: 10px; /* Adjust as needed */
+  margin-bottom: 10px; /* Adjust as needed */
+  list-style: none;
+}
+
+.imageFlex ul{
+  list-style-type: none;
+}
+.images li:last-child {
+  margin-right: 0;
+}
+
+.images {
+  width: 100px; /* Adjust as needed */
+  height: 100px; /* Adjust as needed */
+  object-fit: cover; /* Ensure images maintain aspect ratio */
+  border-radius: 8px;
+ 
+  border: 2px solid red; /* Add border radius for rounded corners */
+}
+.imageFlex ul{
+  display: flex;
+  width: 100%;
+  padding: 0;
+  justify-content: space-around;
+  @include small-break {
+    grid-template-columns: repeat(2, minmax(50%, 1fr));
+    gap: 5px;
+  }
+
+}
+.itineraryList{
+  list-style: none;
+  padding: 10px;
 }

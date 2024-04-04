@@ -27,11 +27,6 @@ export const CommentsBlock: React.FC<CommentsBlockProps> = props => {
 
   return (
     <div className={classes.commentsBlock}>
-      {introContent && (
-        <Gutter className={classes.introContent}>
-          <RichText content={introContent} />
-        </Gutter>
-      )}
       <Gutter>
         <div className={classes.comments}>
           <HR />

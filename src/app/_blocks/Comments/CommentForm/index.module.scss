@@ -1,7 +1,8 @@
 @import "../../../_css/common";
 
 .form {
-  margin-bottom: var(--base);
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   gap: calc(var(--base) / 2);

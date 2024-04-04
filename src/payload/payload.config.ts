@@ -1,6 +1,6 @@
 import { webpackBundler } from '@payloadcms/bundler-webpack' // bundler-import
 import { mongooseAdapter } from '@payloadcms/db-mongodb' // database-adapter-import
-import { payloadCloud } from '@payloadcms/plugin-cloud'
+import formBuilder from '@payloadcms/plugin-form-builder'
 import nestedDocs from '@payloadcms/plugin-nested-docs'
 import redirects from '@payloadcms/plugin-redirects'
 import seo from '@payloadcms/plugin-seo'
@@ -9,6 +9,7 @@ import { slateEditor } from '@payloadcms/richtext-slate' // editor-import
 import dotenv from 'dotenv'
 import path from 'path'
 import { buildConfig } from 'payload/config'
+import imagekitPlugin from 'payloadcms-plugin-imagekit'
 
 import Categories from './collections/Categories'
 import Comments from './collections/Comments'
@@ -19,7 +20,7 @@ import { Projects } from './collections/Projects'
 import Users from './collections/Users'
 import BeforeDashboard from './components/BeforeDashboard'
 import BeforeLogin from './components/BeforeLogin'
-import { seed } from './endpoints/seed'
+// import { seed } from './endpoints/seed'
 import { Footer } from './globals/Footer'
 import { Header } from './globals/Header'
 import { Settings } from './globals/Settings'
@@ -79,11 +80,11 @@ export default buildConfig({
   endpoints: [
     // The seed endpoint is used to populate the database with some example data
     // You should delete this endpoint before deploying your site to production
-    {
-      path: '/seed',
-      method: 'get',
-      handler: seed,
-    },
+    // {
+    //   path: '/seed',
+    //   method: 'get',
+    //   handler: seed,
+    // },
   ],
   plugins: [
     redirects({
@@ -97,6 +98,33 @@ export default buildConfig({
       generateTitle,
       uploadsCollection: 'media',
     }),
-    payloadCloud(),
+    formBuilder({
+      formOverrides: {
+        admin: {
+          group: 'Content',
+        },
+      },
+      formSubmissionOverrides: {
+        admin: {
+          group: 'Admin',
+        },
+      },
+      redirectRelationships: ['pages'],
+    }),
+    imagekitPlugin({
+      config: {
+        publicKey: process.env.IK_PUBLIC_KEY,
+        privateKey: process.env.IK_PRIVATE_KEY,
+        endpoint: process.env.IK_ENDPOINT,
+      },
+      collections: {
+        media: {
+          uploadOption: {
+            folder: 'Payload_Blog',
+          },
+          savedProperties: ['url'],
+        },
+      },
+    }),
   ],
 })

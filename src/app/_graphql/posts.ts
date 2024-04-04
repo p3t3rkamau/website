@@ -43,7 +43,26 @@ export const POST = `
           ${MEDIA_BLOCK}
           ${ARCHIVE_BLOCK}
         }
-        enablePremiumContent
+        HighlightImages {
+          title
+          media {
+            imagekit {
+              fileId
+              thumbnailUrl
+              url
+            }
+          }
+        }
+        Itinary {
+          Heading
+          Description
+        }
+        GoodToKnowExample {
+          Heading
+          Description
+        }
+        Days
+        Price
         relatedPosts {
           id
           slug

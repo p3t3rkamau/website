@@ -1,0 +1,44 @@
+@use '../../../_css/queries.scss' as *;
+
+.card {
+  position: relative;
+  // border: 2px solid var(--color-base-1000);
+  background-color: var(--color-dark-50);
+  min-height: 230px;
+  max-height: 250px;
+  width: 100%;
+  display: flex;
+  border-radius: 50%;
+  align-items: flex-end;
+  justify-content: center;
+  // padding: 20px;
+  cursor: pointer;
+  // border: 1px solid black;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  @include small-break {
+    border-radius: 50%;
+    min-height: 80px;
+    max-height: 130px;
+    min-width: 80px;
+    padding: 5px;
+  }
+}
+.card img {
+  width: 100%;
+  height: 100%;
+  
+  object-fit: cover; /* This will make sure the image covers the entire container */
+}
+.title {
+  border-radius: 10px;
+  padding: 5px;
+ 
+  width: 100%;
+ 
+  text-align: center;
+  background-color: white;
+}

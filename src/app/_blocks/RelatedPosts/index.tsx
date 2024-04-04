@@ -3,8 +3,8 @@ import React from 'react'
 import { Post, Project } from '../../../payload/payload-types'
 import { Card } from '../../_components/Card'
 import { Gutter } from '../../_components/Gutter'
-import RichText from '../../_components/RichText'
 
+// import RichText from '../../_components/RichText'
 import classes from './index.module.scss'
 
 export type RelatedPostsProps = {
@@ -20,12 +20,8 @@ export const RelatedPosts: React.FC<RelatedPostsProps> = props => {
 
   return (
     <div className={classes.relatedPosts}>
-      {introContent && (
-        <Gutter className={classes.introContent}>
-          <RichText content={introContent} />
-        </Gutter>
-      )}
       <Gutter>
+        <h3>Related Tours</h3>
         <div className={classes.grid}>
           {docs?.map((doc, index) => {
             if (typeof doc === 'string') return null

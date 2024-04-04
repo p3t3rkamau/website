@@ -62,17 +62,7 @@ export const CommentForm: React.FC<{
         setError(null)
 
         setSuccess(
-          <Fragment>
-            {'Your comment was submitted for moderation successfully. To approve it, '}
-            <Link
-              href={`${process.env.NEXT_PUBLIC_SERVER_URL}/admin/collections/comments/${
-                typeof json.doc === 'object' ? json.doc.id : json.doc
-              }`}
-            >
-              navigate to the admin dashboard
-            </Link>
-            {' and click "publish".'}
-          </Fragment>,
+          <Fragment>{'Your comment was submitted for moderation successfully. '}</Fragment>,
         )
 
         reset()

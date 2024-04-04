@@ -10,7 +10,7 @@ export const LogoutPage: React.FC<{
   settings: Settings
 }> = props => {
   const { settings } = props
-  const { postsPage, projectsPage } = settings || {}
+  const { productsPage } = settings || {}
   const { logout } = useAuth()
   const [success, setSuccess] = useState('')
   const [error, setError] = useState('')
@@ -28,26 +28,18 @@ export const LogoutPage: React.FC<{
     performLogout()
   }, [logout])
 
-  const hasPostsPage = typeof postsPage === 'object' && postsPage?.slug
-  const hasProjectsPage = typeof projectsPage === 'object' && projectsPage?.slug
-
   return (
     <Fragment>
       {(error || success) && (
         <div>
           <h1>{error || success}</h1>
           <p>
-            {'What would you like to do next? '}
-            {hasPostsPage && hasProjectsPage && <Fragment>{'Browse '}</Fragment>}
-            {hasPostsPage && (
+            {'What would you like to do next?'}
+            {typeof productsPage === 'object' && productsPage?.slug && (
               <Fragment>
-                <Link href={`/${postsPage.slug}`}>all posts</Link>
-              </Fragment>
-            )}
-            {hasPostsPage && hasProjectsPage && <Fragment>{' or '}</Fragment>}
-            {hasProjectsPage && (
-              <Fragment>
-                <Link href={`/${projectsPage.slug}`}>all projects</Link>
+                {' '}
+                <Link href={`/${productsPage.slug}`}>Click here</Link>
+                {` to shop.`}
               </Fragment>
             )}
             {` To log back in, `}

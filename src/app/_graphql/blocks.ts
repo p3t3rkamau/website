@@ -1,4 +1,5 @@
 import { CATEGORIES } from './categories'
+import { FORM_FIELDS } from './form'
 import { LINK_FIELDS } from './link'
 import { MEDIA } from './media'
 import { META } from './meta'
@@ -81,5 +82,13 @@ export const ARCHIVE_BLOCK = `
     }
   }
   populatedDocsTotal
+}
+`
+export const FORM_BLOCK = `
+...on FormBlock {
+  blockType
+  form {
+    ${FORM_FIELDS}
+  }
 }
 `

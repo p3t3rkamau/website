@@ -1,4 +1,6 @@
-import React, { Fragment } from 'react'
+'use client'
+import React, { Fragment, useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { Post } from '../../../payload/payload-types'
@@ -19,7 +21,14 @@ export const PostHero: React.FC<{
     meta: { image: metaImage, description } = {},
     publishedAt,
     populatedAuthors,
+    Itinary,
+    HighlightImages,
+    GoodToKnowExample,
+    Days,
+    Price,
   } = post
+
+  const [accordionActive, setAccordionActive] = useState<string | null>(null)
 
   return (
     <Fragment>
@@ -75,15 +84,6 @@ export const PostHero: React.FC<{
               </Fragment>
             )}
           </p>
-          <div>
-            <p className={classes.description}>
-              {`${description ? `${description} ` : ''}To edit this post, `}
-              <Link href={`${process.env.NEXT_PUBLIC_SERVER_URL}/admin/collections/posts/${id}`}>
-                navigate to the admin dashboard
-              </Link>
-              {'.'}
-            </p>
-          </div>
         </div>
         <div className={classes.media}>
           <div className={classes.mediaWrapper}>
@@ -92,9 +92,73 @@ export const PostHero: React.FC<{
               <Media imgClassName={classes.image} resource={metaImage} fill />
             )}
           </div>
-          {metaImage && typeof metaImage !== 'string' && metaImage?.caption && (
-            <RichText content={metaImage.caption} className={classes.caption} />
-          )}
+        </div>
+      </Gutter>
+      <Gutter>
+        <div className={classes.additionalData}>
+          <div className={classes.priceFlex}>
+            <div>
+              <h4>Price: {Price}</h4>
+            </div>
+            <div>
+              <h4>Days: {Days}</h4>
+            </div>
+          </div>
+          <h4 className={classes.imageHighlight}>Highlight</h4>
+          <div className={classes.imageFlex}>
+            <ul className="images">
+              {HighlightImages.map((image, index) => (
+                <li key={index}>
+                  <div className={classes.imageWrapper}>
+                    <Image
+                      src={image.media.imagekit.url}
+                      width={200}
+                      height={150}
+                      alt={image.title}
+                    />
+                  </div>
+                  <div>{image.title}</div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <h3 className={classes.imageHighlight}>Itinerary</h3>
+          <ul className={classes.itineraryList}>
+            {Itinary.map((item, index) => (
+              <li key={index}>
+                <button
+                  className={classes.accordion}
+                  onClick={() =>
+                    setAccordionActive(
+                      accordionActive === `itinerary-${index}` ? null : `itinerary-${index}`,
+                    )
+                  }
+                >
+                  {item.Heading}
+                </button>
+                {accordionActive === `itinerary-${index}` && <p>{item.Description}</p>}
+              </li>
+            ))}
+          </ul>
+          <h3 className={classes.imageHighlight}>Good to Know </h3>
+          <ul className={classes.itineraryList}>
+            {GoodToKnowExample.map((item, index) => (
+              <li key={index}>
+                <button
+                  className={classes.accordion}
+                  onClick={() =>
+                    setAccordionActive(
+                      accordionActive === `goodToKnow-${index}` ? null : `goodToKnow-${index}`,
+                    )
+                  }
+                >
+                  {item.Heading}
+                </button>
+                {accordionActive === `goodToKnow-${index}` && <p>{item.Description}</p>}
+              </li>
+            ))}
+          </ul>
         </div>
       </Gutter>
     </Fragment>
