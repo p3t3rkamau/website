@@ -36,3 +36,22 @@
     background-color: #fafafa;
   }
   
+  .expandButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: #eee7e7;
+    color: #333;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .expandButton:hover {
+    background-color: #e0e0e0;
+  }
+  

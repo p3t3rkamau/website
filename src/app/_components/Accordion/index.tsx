@@ -4,41 +4,51 @@ import { BsDash, BsPlus } from 'react-icons/bs' // Import plus and minus icons f
 
 import { Gutter } from '../Gutter'
 
-// import { HR } from '../HR'
 import classes from './index.module.scss'
 
 const Accordion = ({ accordion }) => {
-  const [accordionActive, setAccordionActive] = useState<string | null>(null)
+  const [visibleAccordions, setVisibleAccordions] = useState(5) // Initial number of visible accordions
+  const [showAll, setShowAll] = useState(false) // State to control whether to show all accordions or not
+  const [accordionActive, setAccordionActive] = useState(null) // State to store active accordion
 
-  const handleClick = (index: number) => {
-    setAccordionActive(prevState =>
-      // eslint-disable-next-line prettier/prettier
-      prevState === `itinerary-${index}` ? null : `itinerary-${index}`,)
+  const toggleShowAll = () => {
+    setShowAll(!showAll)
   }
+
+  const handleClick = index => {
+    setAccordionActive(prevState => (prevState === index ? null : index))
+  }
+
   return (
     <Fragment>
       <Gutter>
+        <h3 className={classes.faqHeader}>Frequently Asked Questions</h3>
         <ul className={classes.itineraryList}>
-          {accordion.map((item, index) => (
+          {accordion.slice(0, showAll ? accordion.length : visibleAccordions).map((item, index) => (
             <li key={item.id}>
               <button
                 className={`${classes.accordion} ${
-                  accordionActive === `itinerary-${index}` ? classes.active : ''
+                  accordionActive === index ? classes.active : ''
                 }`}
                 onClick={() => handleClick(index)}
               >
                 <span className={classes.icon}>
-                  {accordionActive === `itinerary-${index}` ? <BsDash /> : <BsPlus />}{' '}
+                  {accordionActive === index ? <BsDash /> : <BsPlus />}{' '}
                   {/* Render plus or minus icon */}
                 </span>
                 {item.Heading}
               </button>
-              {accordionActive === `itinerary-${index}` && (
+              {accordionActive === index && (
                 <p className={classes.description}>{item.Description}</p>
               )}
             </li>
           ))}
         </ul>
+        {accordion.length > visibleAccordions && !showAll && (
+          <button className={classes.expandButton} onClick={toggleShowAll}>
+            Show More
+          </button>
+        )}
       </Gutter>
     </Fragment>
   )
