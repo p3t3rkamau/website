@@ -1,0 +1,38 @@
+.faqHeader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* index.module.scss */
+
+.itineraryList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .accordion {
+    background-color: #f4f4f4;
+    color: #333;
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    text-align: left;
+    margin: 2px;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .accordion:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .accordion.active {
+    background-color: #ddd;
+  }
+  
+  .accordion p {
+    padding: 10px;
+    background-color: #fafafa;
+  }
+  

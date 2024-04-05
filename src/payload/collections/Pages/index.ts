@@ -72,5 +72,52 @@ export const Pages: CollectionConfig = {
       ],
     },
     slugField(),
+    {
+      name: 'Categories',
+      type: 'relationship',
+      relationTo: 'categories',
+      hasMany: true,
+      required: true,
+      admin: {
+        position: 'sidebar',
+      },
+      filterOptions: ({ id }) => {
+        return {
+          id: {
+            not_in: [id],
+          },
+        }
+      },
+    },
+    {
+      name: 'Accordion',
+      label: 'Accordion',
+      labels: {
+        singular: 'accordion',
+        plural: 'accordion',
+      },
+      type: 'array',
+      minRows: 2,
+      maxRows: 20,
+      fields: [
+        {
+          label: ({ data }) => data?.title || 'Untitled',
+          type: 'collapsible', // required
+          fields: [
+            // required
+            {
+              name: 'Heading',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'Description',
+              type: 'textarea',
+              required: true,
+            },
+          ],
+        },
+      ],
+    },
   ],
 }

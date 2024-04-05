@@ -1,3 +1,5 @@
+@use '../../../app/_css/queries.scss' as *;
+
 .TopBarContainer{
     display: flex;
     width: 100%;
@@ -5,14 +7,21 @@
     justify-content: space-around;
     align-items: center;
     font-size: 12px;
+    @include small-break{
+        padding: 0 10px;
+    }
 }
 .callFLex{
     display: flex;
-    width: 40%;
+    width: 50%;
     justify-content: space-around;
     align-items: flex-end;
     margin: 0 10px 0 10px;
     cursor: pointer;
+    @include small-break{
+        padding: 0 10px;
+        width: 80%;
+    }
 }
 .phoneIcon{
     margin: 0 10px 0 10px;

@@ -58,6 +58,8 @@ type Page {
   hero: Page_Hero
   layout: [Page_Layout!]!
   slug: String
+  Categories: [Category!]
+  Accordion: [Page_Accordion!]
   meta: Page_Meta
   updatedAt: DateTime
   createdAt: DateTime
@@ -1364,7 +1366,207 @@ input Post_HighlightImages_Media_where_or {
 type Post_Itinary {
   Heading: String
   Description: String
+  DescriptionImages: [Post_Itinary_DescriptionImages!]
   id: String
+}
+
+type Post_Itinary_DescriptionImages {
+  media(where: Post_Itinary_DescriptionImages_Media_where): Media
+  id: String
+}
+
+input Post_Itinary_DescriptionImages_Media_where {
+  alt: Post_Itinary_DescriptionImages_Media_alt_operator
+  imagekit__fileId: Post_Itinary_DescriptionImages_Media_imagekit__fileId_operator
+  imagekit__thumbnailUrl: Post_Itinary_DescriptionImages_Media_imagekit__thumbnailUrl_operator
+  imagekit__url: Post_Itinary_DescriptionImages_Media_imagekit__url_operator
+  updatedAt: Post_Itinary_DescriptionImages_Media_updatedAt_operator
+  createdAt: Post_Itinary_DescriptionImages_Media_createdAt_operator
+  url: Post_Itinary_DescriptionImages_Media_url_operator
+  filename: Post_Itinary_DescriptionImages_Media_filename_operator
+  mimeType: Post_Itinary_DescriptionImages_Media_mimeType_operator
+  filesize: Post_Itinary_DescriptionImages_Media_filesize_operator
+  width: Post_Itinary_DescriptionImages_Media_width_operator
+  height: Post_Itinary_DescriptionImages_Media_height_operator
+  id: Post_Itinary_DescriptionImages_Media_id_operator
+  AND: [Post_Itinary_DescriptionImages_Media_where_and]
+  OR: [Post_Itinary_DescriptionImages_Media_where_or]
+}
+
+input Post_Itinary_DescriptionImages_Media_alt_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Post_Itinary_DescriptionImages_Media_imagekit__fileId_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Post_Itinary_DescriptionImages_Media_imagekit__thumbnailUrl_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Post_Itinary_DescriptionImages_Media_imagekit__url_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Post_Itinary_DescriptionImages_Media_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Post_Itinary_DescriptionImages_Media_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Post_Itinary_DescriptionImages_Media_url_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Post_Itinary_DescriptionImages_Media_filename_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Post_Itinary_DescriptionImages_Media_mimeType_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Post_Itinary_DescriptionImages_Media_filesize_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Post_Itinary_DescriptionImages_Media_width_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Post_Itinary_DescriptionImages_Media_height_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Post_Itinary_DescriptionImages_Media_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Post_Itinary_DescriptionImages_Media_where_and {
+  alt: Post_Itinary_DescriptionImages_Media_alt_operator
+  imagekit__fileId: Post_Itinary_DescriptionImages_Media_imagekit__fileId_operator
+  imagekit__thumbnailUrl: Post_Itinary_DescriptionImages_Media_imagekit__thumbnailUrl_operator
+  imagekit__url: Post_Itinary_DescriptionImages_Media_imagekit__url_operator
+  updatedAt: Post_Itinary_DescriptionImages_Media_updatedAt_operator
+  createdAt: Post_Itinary_DescriptionImages_Media_createdAt_operator
+  url: Post_Itinary_DescriptionImages_Media_url_operator
+  filename: Post_Itinary_DescriptionImages_Media_filename_operator
+  mimeType: Post_Itinary_DescriptionImages_Media_mimeType_operator
+  filesize: Post_Itinary_DescriptionImages_Media_filesize_operator
+  width: Post_Itinary_DescriptionImages_Media_width_operator
+  height: Post_Itinary_DescriptionImages_Media_height_operator
+  id: Post_Itinary_DescriptionImages_Media_id_operator
+  AND: [Post_Itinary_DescriptionImages_Media_where_and]
+  OR: [Post_Itinary_DescriptionImages_Media_where_or]
+}
+
+input Post_Itinary_DescriptionImages_Media_where_or {
+  alt: Post_Itinary_DescriptionImages_Media_alt_operator
+  imagekit__fileId: Post_Itinary_DescriptionImages_Media_imagekit__fileId_operator
+  imagekit__thumbnailUrl: Post_Itinary_DescriptionImages_Media_imagekit__thumbnailUrl_operator
+  imagekit__url: Post_Itinary_DescriptionImages_Media_imagekit__url_operator
+  updatedAt: Post_Itinary_DescriptionImages_Media_updatedAt_operator
+  createdAt: Post_Itinary_DescriptionImages_Media_createdAt_operator
+  url: Post_Itinary_DescriptionImages_Media_url_operator
+  filename: Post_Itinary_DescriptionImages_Media_filename_operator
+  mimeType: Post_Itinary_DescriptionImages_Media_mimeType_operator
+  filesize: Post_Itinary_DescriptionImages_Media_filesize_operator
+  width: Post_Itinary_DescriptionImages_Media_width_operator
+  height: Post_Itinary_DescriptionImages_Media_height_operator
+  id: Post_Itinary_DescriptionImages_Media_id_operator
+  AND: [Post_Itinary_DescriptionImages_Media_where_and]
+  OR: [Post_Itinary_DescriptionImages_Media_where_or]
 }
 
 type Post_GoodToKnowExample {
@@ -2248,6 +2450,12 @@ type Form_Emails {
   id: String
 }
 
+type Page_Accordion {
+  Heading: String
+  Description: String
+  id: String
+}
+
 type Page_Meta {
   title: String
   description: String
@@ -2481,6 +2689,10 @@ input Page_where {
   hero__links__id: Page_hero__links__id_operator
   hero__media: Page_hero__media_operator
   slug: Page_slug_operator
+  Categories: Page_Categories_operator
+  Accordion__Heading: Page_Accordion__Heading_operator
+  Accordion__Description: Page_Accordion__Description_operator
+  Accordion__id: Page_Accordion__id_operator
   meta__title: Page_meta__title_operator
   meta__description: Page_meta__description_operator
   meta__image: Page_meta__image_operator
@@ -2625,6 +2837,42 @@ input Page_slug_operator {
   exists: Boolean
 }
 
+input Page_Categories_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+input Page_Accordion__Heading_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input Page_Accordion__Description_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+}
+
+input Page_Accordion__id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
 input Page_meta__title_operator {
   equals: String
   not_equals: String
@@ -2711,6 +2959,10 @@ input Page_where_and {
   hero__links__id: Page_hero__links__id_operator
   hero__media: Page_hero__media_operator
   slug: Page_slug_operator
+  Categories: Page_Categories_operator
+  Accordion__Heading: Page_Accordion__Heading_operator
+  Accordion__Description: Page_Accordion__Description_operator
+  Accordion__id: Page_Accordion__id_operator
   meta__title: Page_meta__title_operator
   meta__description: Page_meta__description_operator
   meta__image: Page_meta__image_operator
@@ -2736,6 +2988,10 @@ input Page_where_or {
   hero__links__id: Page_hero__links__id_operator
   hero__media: Page_hero__media_operator
   slug: Page_slug_operator
+  Categories: Page_Categories_operator
+  Accordion__Heading: Page_Accordion__Heading_operator
+  Accordion__Description: Page_Accordion__Description_operator
+  Accordion__id: Page_Accordion__id_operator
   meta__title: Page_meta__title_operator
   meta__description: Page_meta__description_operator
   meta__image: Page_meta__image_operator
@@ -2762,6 +3018,8 @@ type PagesDocAccessFields {
   hero: PagesDocAccessFields_hero
   layout: PagesDocAccessFields_layout
   slug: PagesDocAccessFields_slug
+  Categories: PagesDocAccessFields_Categories
+  Accordion: PagesDocAccessFields_Accordion
   meta: PagesDocAccessFields_meta
   updatedAt: PagesDocAccessFields_updatedAt
   createdAt: PagesDocAccessFields_createdAt
@@ -3183,6 +3441,128 @@ type PagesDocAccessFields_slug_Delete {
   permission: Boolean!
 }
 
+type PagesDocAccessFields_Categories {
+  create: PagesDocAccessFields_Categories_Create
+  read: PagesDocAccessFields_Categories_Read
+  update: PagesDocAccessFields_Categories_Update
+  delete: PagesDocAccessFields_Categories_Delete
+}
+
+type PagesDocAccessFields_Categories_Create {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_Categories_Read {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_Categories_Update {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_Categories_Delete {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_Accordion {
+  create: PagesDocAccessFields_Accordion_Create
+  read: PagesDocAccessFields_Accordion_Read
+  update: PagesDocAccessFields_Accordion_Update
+  delete: PagesDocAccessFields_Accordion_Delete
+  fields: PagesDocAccessFields_Accordion_Fields
+}
+
+type PagesDocAccessFields_Accordion_Create {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_Accordion_Read {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_Accordion_Update {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_Accordion_Delete {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_Accordion_Fields {
+  Heading: PagesDocAccessFields_Accordion_Heading
+  Description: PagesDocAccessFields_Accordion_Description
+  id: PagesDocAccessFields_Accordion_id
+}
+
+type PagesDocAccessFields_Accordion_Heading {
+  create: PagesDocAccessFields_Accordion_Heading_Create
+  read: PagesDocAccessFields_Accordion_Heading_Read
+  update: PagesDocAccessFields_Accordion_Heading_Update
+  delete: PagesDocAccessFields_Accordion_Heading_Delete
+}
+
+type PagesDocAccessFields_Accordion_Heading_Create {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_Accordion_Heading_Read {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_Accordion_Heading_Update {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_Accordion_Heading_Delete {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_Accordion_Description {
+  create: PagesDocAccessFields_Accordion_Description_Create
+  read: PagesDocAccessFields_Accordion_Description_Read
+  update: PagesDocAccessFields_Accordion_Description_Update
+  delete: PagesDocAccessFields_Accordion_Description_Delete
+}
+
+type PagesDocAccessFields_Accordion_Description_Create {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_Accordion_Description_Read {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_Accordion_Description_Update {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_Accordion_Description_Delete {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_Accordion_id {
+  create: PagesDocAccessFields_Accordion_id_Create
+  read: PagesDocAccessFields_Accordion_id_Read
+  update: PagesDocAccessFields_Accordion_id_Update
+  delete: PagesDocAccessFields_Accordion_id_Delete
+}
+
+type PagesDocAccessFields_Accordion_id_Create {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_Accordion_id_Read {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_Accordion_id_Update {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_Accordion_id_Delete {
+  permission: Boolean!
+}
+
 type PagesDocAccessFields_meta {
   create: PagesDocAccessFields_meta_Create
   read: PagesDocAccessFields_meta_Read
@@ -3444,6 +3824,8 @@ type PageVersion_Version {
   hero: PageVersion_Version_Hero
   layout: [PageVersion_Version_Layout!]!
   slug: String
+  Categories: [Category!]
+  Accordion: [PageVersion_Version_Accordion!]
   meta: PageVersion_Version_Meta
   updatedAt: DateTime
   createdAt: DateTime
@@ -3696,6 +4078,12 @@ input PageVersion_Version_Hero_Media_where_or {
 
 union PageVersion_Version_Layout = Cta | Content | MediaBlock | Archive | FormBlock
 
+type PageVersion_Version_Accordion {
+  Heading: String
+  Description: String
+  id: String
+}
+
 type PageVersion_Version_Meta {
   title: String
   description: String
@@ -3930,6 +4318,10 @@ input versionsPage_where {
   version__hero__links__id: versionsPage_version__hero__links__id_operator
   version__hero__media: versionsPage_version__hero__media_operator
   version__slug: versionsPage_version__slug_operator
+  version__Categories: versionsPage_version__Categories_operator
+  version__Accordion__Heading: versionsPage_version__Accordion__Heading_operator
+  version__Accordion__Description: versionsPage_version__Accordion__Description_operator
+  version__Accordion__id: versionsPage_version__Accordion__id_operator
   version__meta__title: versionsPage_version__meta__title_operator
   version__meta__description: versionsPage_version__meta__description_operator
   version__meta__image: versionsPage_version__meta__image_operator
@@ -4086,6 +4478,42 @@ input versionsPage_version__slug_operator {
   exists: Boolean
 }
 
+input versionsPage_version__Categories_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+input versionsPage_version__Accordion__Heading_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input versionsPage_version__Accordion__Description_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+}
+
+input versionsPage_version__Accordion__id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
 input versionsPage_version__meta__title_operator {
   equals: String
   not_equals: String
@@ -4201,6 +4629,10 @@ input versionsPage_where_and {
   version__hero__links__id: versionsPage_version__hero__links__id_operator
   version__hero__media: versionsPage_version__hero__media_operator
   version__slug: versionsPage_version__slug_operator
+  version__Categories: versionsPage_version__Categories_operator
+  version__Accordion__Heading: versionsPage_version__Accordion__Heading_operator
+  version__Accordion__Description: versionsPage_version__Accordion__Description_operator
+  version__Accordion__id: versionsPage_version__Accordion__id_operator
   version__meta__title: versionsPage_version__meta__title_operator
   version__meta__description: versionsPage_version__meta__description_operator
   version__meta__image: versionsPage_version__meta__image_operator
@@ -4230,6 +4662,10 @@ input versionsPage_where_or {
   version__hero__links__id: versionsPage_version__hero__links__id_operator
   version__hero__media: versionsPage_version__hero__media_operator
   version__slug: versionsPage_version__slug_operator
+  version__Categories: versionsPage_version__Categories_operator
+  version__Accordion__Heading: versionsPage_version__Accordion__Heading_operator
+  version__Accordion__Description: versionsPage_version__Accordion__Description_operator
+  version__Accordion__id: versionsPage_version__Accordion__id_operator
   version__meta__title: versionsPage_version__meta__title_operator
   version__meta__description: versionsPage_version__meta__description_operator
   version__meta__image: versionsPage_version__meta__image_operator
@@ -4280,6 +4716,8 @@ input Post_where {
   categories: Post_categories_operator
   Itinary__Heading: Post_Itinary__Heading_operator
   Itinary__Description: Post_Itinary__Description_operator
+  Itinary__DescriptionImages__media: Post_Itinary__DescriptionImages__media_operator
+  Itinary__DescriptionImages__id: Post_Itinary__DescriptionImages__id_operator
   Itinary__id: Post_Itinary__id_operator
   GoodToKnowExample__Heading: Post_GoodToKnowExample__Heading_operator
   GoodToKnowExample__Description: Post_GoodToKnowExample__Description_operator
@@ -4499,9 +4937,22 @@ input Post_Itinary__Description_operator {
   not_equals: String
   like: String
   contains: String
+}
+
+input Post_Itinary__DescriptionImages__media_operator {
+  equals: String
+  not_equals: String
+}
+
+input Post_Itinary__DescriptionImages__id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
   in: [String]
   not_in: [String]
   all: [String]
+  exists: Boolean
 }
 
 input Post_Itinary__id_operator {
@@ -4530,9 +4981,6 @@ input Post_GoodToKnowExample__Description_operator {
   not_equals: String
   like: String
   contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
 }
 
 input Post_GoodToKnowExample__id_operator {
@@ -4682,6 +5130,8 @@ input Post_where_and {
   categories: Post_categories_operator
   Itinary__Heading: Post_Itinary__Heading_operator
   Itinary__Description: Post_Itinary__Description_operator
+  Itinary__DescriptionImages__media: Post_Itinary__DescriptionImages__media_operator
+  Itinary__DescriptionImages__id: Post_Itinary__DescriptionImages__id_operator
   Itinary__id: Post_Itinary__id_operator
   GoodToKnowExample__Heading: Post_GoodToKnowExample__Heading_operator
   GoodToKnowExample__Description: Post_GoodToKnowExample__Description_operator
@@ -4723,6 +5173,8 @@ input Post_where_or {
   categories: Post_categories_operator
   Itinary__Heading: Post_Itinary__Heading_operator
   Itinary__Description: Post_Itinary__Description_operator
+  Itinary__DescriptionImages__media: Post_Itinary__DescriptionImages__media_operator
+  Itinary__DescriptionImages__id: Post_Itinary__DescriptionImages__id_operator
   Itinary__id: Post_Itinary__id_operator
   GoodToKnowExample__Heading: Post_GoodToKnowExample__Heading_operator
   GoodToKnowExample__Description: Post_GoodToKnowExample__Description_operator
@@ -5382,6 +5834,7 @@ type PostsDocAccessFields_Itinary_Delete {
 type PostsDocAccessFields_Itinary_Fields {
   Heading: PostsDocAccessFields_Itinary_Heading
   Description: PostsDocAccessFields_Itinary_Description
+  DescriptionImages: PostsDocAccessFields_Itinary_DescriptionImages
   id: PostsDocAccessFields_Itinary_id
 }
 
@@ -5428,6 +5881,81 @@ type PostsDocAccessFields_Itinary_Description_Update {
 }
 
 type PostsDocAccessFields_Itinary_Description_Delete {
+  permission: Boolean!
+}
+
+type PostsDocAccessFields_Itinary_DescriptionImages {
+  create: PostsDocAccessFields_Itinary_DescriptionImages_Create
+  read: PostsDocAccessFields_Itinary_DescriptionImages_Read
+  update: PostsDocAccessFields_Itinary_DescriptionImages_Update
+  delete: PostsDocAccessFields_Itinary_DescriptionImages_Delete
+  fields: PostsDocAccessFields_Itinary_DescriptionImages_Fields
+}
+
+type PostsDocAccessFields_Itinary_DescriptionImages_Create {
+  permission: Boolean!
+}
+
+type PostsDocAccessFields_Itinary_DescriptionImages_Read {
+  permission: Boolean!
+}
+
+type PostsDocAccessFields_Itinary_DescriptionImages_Update {
+  permission: Boolean!
+}
+
+type PostsDocAccessFields_Itinary_DescriptionImages_Delete {
+  permission: Boolean!
+}
+
+type PostsDocAccessFields_Itinary_DescriptionImages_Fields {
+  media: PostsDocAccessFields_Itinary_DescriptionImages_media
+  id: PostsDocAccessFields_Itinary_DescriptionImages_id
+}
+
+type PostsDocAccessFields_Itinary_DescriptionImages_media {
+  create: PostsDocAccessFields_Itinary_DescriptionImages_media_Create
+  read: PostsDocAccessFields_Itinary_DescriptionImages_media_Read
+  update: PostsDocAccessFields_Itinary_DescriptionImages_media_Update
+  delete: PostsDocAccessFields_Itinary_DescriptionImages_media_Delete
+}
+
+type PostsDocAccessFields_Itinary_DescriptionImages_media_Create {
+  permission: Boolean!
+}
+
+type PostsDocAccessFields_Itinary_DescriptionImages_media_Read {
+  permission: Boolean!
+}
+
+type PostsDocAccessFields_Itinary_DescriptionImages_media_Update {
+  permission: Boolean!
+}
+
+type PostsDocAccessFields_Itinary_DescriptionImages_media_Delete {
+  permission: Boolean!
+}
+
+type PostsDocAccessFields_Itinary_DescriptionImages_id {
+  create: PostsDocAccessFields_Itinary_DescriptionImages_id_Create
+  read: PostsDocAccessFields_Itinary_DescriptionImages_id_Read
+  update: PostsDocAccessFields_Itinary_DescriptionImages_id_Update
+  delete: PostsDocAccessFields_Itinary_DescriptionImages_id_Delete
+}
+
+type PostsDocAccessFields_Itinary_DescriptionImages_id_Create {
+  permission: Boolean!
+}
+
+type PostsDocAccessFields_Itinary_DescriptionImages_id_Read {
+  permission: Boolean!
+}
+
+type PostsDocAccessFields_Itinary_DescriptionImages_id_Update {
+  permission: Boolean!
+}
+
+type PostsDocAccessFields_Itinary_DescriptionImages_id_Delete {
   permission: Boolean!
 }
 
@@ -6394,7 +6922,207 @@ input PostVersion_Version_HighlightImages_Media_where_or {
 type PostVersion_Version_Itinary {
   Heading: String
   Description: String
+  DescriptionImages: [PostVersion_Version_Itinary_DescriptionImages!]
   id: String
+}
+
+type PostVersion_Version_Itinary_DescriptionImages {
+  media(where: PostVersion_Version_Itinary_DescriptionImages_Media_where): Media
+  id: String
+}
+
+input PostVersion_Version_Itinary_DescriptionImages_Media_where {
+  alt: PostVersion_Version_Itinary_DescriptionImages_Media_alt_operator
+  imagekit__fileId: PostVersion_Version_Itinary_DescriptionImages_Media_imagekit__fileId_operator
+  imagekit__thumbnailUrl: PostVersion_Version_Itinary_DescriptionImages_Media_imagekit__thumbnailUrl_operator
+  imagekit__url: PostVersion_Version_Itinary_DescriptionImages_Media_imagekit__url_operator
+  updatedAt: PostVersion_Version_Itinary_DescriptionImages_Media_updatedAt_operator
+  createdAt: PostVersion_Version_Itinary_DescriptionImages_Media_createdAt_operator
+  url: PostVersion_Version_Itinary_DescriptionImages_Media_url_operator
+  filename: PostVersion_Version_Itinary_DescriptionImages_Media_filename_operator
+  mimeType: PostVersion_Version_Itinary_DescriptionImages_Media_mimeType_operator
+  filesize: PostVersion_Version_Itinary_DescriptionImages_Media_filesize_operator
+  width: PostVersion_Version_Itinary_DescriptionImages_Media_width_operator
+  height: PostVersion_Version_Itinary_DescriptionImages_Media_height_operator
+  id: PostVersion_Version_Itinary_DescriptionImages_Media_id_operator
+  AND: [PostVersion_Version_Itinary_DescriptionImages_Media_where_and]
+  OR: [PostVersion_Version_Itinary_DescriptionImages_Media_where_or]
+}
+
+input PostVersion_Version_Itinary_DescriptionImages_Media_alt_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input PostVersion_Version_Itinary_DescriptionImages_Media_imagekit__fileId_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input PostVersion_Version_Itinary_DescriptionImages_Media_imagekit__thumbnailUrl_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input PostVersion_Version_Itinary_DescriptionImages_Media_imagekit__url_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input PostVersion_Version_Itinary_DescriptionImages_Media_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input PostVersion_Version_Itinary_DescriptionImages_Media_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input PostVersion_Version_Itinary_DescriptionImages_Media_url_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input PostVersion_Version_Itinary_DescriptionImages_Media_filename_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input PostVersion_Version_Itinary_DescriptionImages_Media_mimeType_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input PostVersion_Version_Itinary_DescriptionImages_Media_filesize_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input PostVersion_Version_Itinary_DescriptionImages_Media_width_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input PostVersion_Version_Itinary_DescriptionImages_Media_height_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input PostVersion_Version_Itinary_DescriptionImages_Media_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input PostVersion_Version_Itinary_DescriptionImages_Media_where_and {
+  alt: PostVersion_Version_Itinary_DescriptionImages_Media_alt_operator
+  imagekit__fileId: PostVersion_Version_Itinary_DescriptionImages_Media_imagekit__fileId_operator
+  imagekit__thumbnailUrl: PostVersion_Version_Itinary_DescriptionImages_Media_imagekit__thumbnailUrl_operator
+  imagekit__url: PostVersion_Version_Itinary_DescriptionImages_Media_imagekit__url_operator
+  updatedAt: PostVersion_Version_Itinary_DescriptionImages_Media_updatedAt_operator
+  createdAt: PostVersion_Version_Itinary_DescriptionImages_Media_createdAt_operator
+  url: PostVersion_Version_Itinary_DescriptionImages_Media_url_operator
+  filename: PostVersion_Version_Itinary_DescriptionImages_Media_filename_operator
+  mimeType: PostVersion_Version_Itinary_DescriptionImages_Media_mimeType_operator
+  filesize: PostVersion_Version_Itinary_DescriptionImages_Media_filesize_operator
+  width: PostVersion_Version_Itinary_DescriptionImages_Media_width_operator
+  height: PostVersion_Version_Itinary_DescriptionImages_Media_height_operator
+  id: PostVersion_Version_Itinary_DescriptionImages_Media_id_operator
+  AND: [PostVersion_Version_Itinary_DescriptionImages_Media_where_and]
+  OR: [PostVersion_Version_Itinary_DescriptionImages_Media_where_or]
+}
+
+input PostVersion_Version_Itinary_DescriptionImages_Media_where_or {
+  alt: PostVersion_Version_Itinary_DescriptionImages_Media_alt_operator
+  imagekit__fileId: PostVersion_Version_Itinary_DescriptionImages_Media_imagekit__fileId_operator
+  imagekit__thumbnailUrl: PostVersion_Version_Itinary_DescriptionImages_Media_imagekit__thumbnailUrl_operator
+  imagekit__url: PostVersion_Version_Itinary_DescriptionImages_Media_imagekit__url_operator
+  updatedAt: PostVersion_Version_Itinary_DescriptionImages_Media_updatedAt_operator
+  createdAt: PostVersion_Version_Itinary_DescriptionImages_Media_createdAt_operator
+  url: PostVersion_Version_Itinary_DescriptionImages_Media_url_operator
+  filename: PostVersion_Version_Itinary_DescriptionImages_Media_filename_operator
+  mimeType: PostVersion_Version_Itinary_DescriptionImages_Media_mimeType_operator
+  filesize: PostVersion_Version_Itinary_DescriptionImages_Media_filesize_operator
+  width: PostVersion_Version_Itinary_DescriptionImages_Media_width_operator
+  height: PostVersion_Version_Itinary_DescriptionImages_Media_height_operator
+  id: PostVersion_Version_Itinary_DescriptionImages_Media_id_operator
+  AND: [PostVersion_Version_Itinary_DescriptionImages_Media_where_and]
+  OR: [PostVersion_Version_Itinary_DescriptionImages_Media_where_or]
 }
 
 type PostVersion_Version_GoodToKnowExample {
@@ -6650,6 +7378,8 @@ input versionsPost_where {
   version__categories: versionsPost_version__categories_operator
   version__Itinary__Heading: versionsPost_version__Itinary__Heading_operator
   version__Itinary__Description: versionsPost_version__Itinary__Description_operator
+  version__Itinary__DescriptionImages__media: versionsPost_version__Itinary__DescriptionImages__media_operator
+  version__Itinary__DescriptionImages__id: versionsPost_version__Itinary__DescriptionImages__id_operator
   version__Itinary__id: versionsPost_version__Itinary__id_operator
   version__GoodToKnowExample__Heading: versionsPost_version__GoodToKnowExample__Heading_operator
   version__GoodToKnowExample__Description: versionsPost_version__GoodToKnowExample__Description_operator
@@ -6881,9 +7611,22 @@ input versionsPost_version__Itinary__Description_operator {
   not_equals: String
   like: String
   contains: String
+}
+
+input versionsPost_version__Itinary__DescriptionImages__media_operator {
+  equals: String
+  not_equals: String
+}
+
+input versionsPost_version__Itinary__DescriptionImages__id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
   in: [String]
   not_in: [String]
   all: [String]
+  exists: Boolean
 }
 
 input versionsPost_version__Itinary__id_operator {
@@ -6912,9 +7655,6 @@ input versionsPost_version__GoodToKnowExample__Description_operator {
   not_equals: String
   like: String
   contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
 }
 
 input versionsPost_version__GoodToKnowExample__id_operator {
@@ -7093,6 +7833,8 @@ input versionsPost_where_and {
   version__categories: versionsPost_version__categories_operator
   version__Itinary__Heading: versionsPost_version__Itinary__Heading_operator
   version__Itinary__Description: versionsPost_version__Itinary__Description_operator
+  version__Itinary__DescriptionImages__media: versionsPost_version__Itinary__DescriptionImages__media_operator
+  version__Itinary__DescriptionImages__id: versionsPost_version__Itinary__DescriptionImages__id_operator
   version__Itinary__id: versionsPost_version__Itinary__id_operator
   version__GoodToKnowExample__Heading: versionsPost_version__GoodToKnowExample__Heading_operator
   version__GoodToKnowExample__Description: versionsPost_version__GoodToKnowExample__Description_operator
@@ -7138,6 +7880,8 @@ input versionsPost_where_or {
   version__categories: versionsPost_version__categories_operator
   version__Itinary__Heading: versionsPost_version__Itinary__Heading_operator
   version__Itinary__Description: versionsPost_version__Itinary__Description_operator
+  version__Itinary__DescriptionImages__media: versionsPost_version__Itinary__DescriptionImages__media_operator
+  version__Itinary__DescriptionImages__id: versionsPost_version__Itinary__DescriptionImages__id_operator
   version__Itinary__id: versionsPost_version__Itinary__id_operator
   version__GoodToKnowExample__Heading: versionsPost_version__GoodToKnowExample__Heading_operator
   version__GoodToKnowExample__Description: versionsPost_version__GoodToKnowExample__Description_operator
@@ -13575,6 +14319,8 @@ type PagesFields {
   hero: PagesFields_hero
   layout: PagesFields_layout
   slug: PagesFields_slug
+  Categories: PagesFields_Categories
+  Accordion: PagesFields_Accordion
   meta: PagesFields_meta
   updatedAt: PagesFields_updatedAt
   createdAt: PagesFields_createdAt
@@ -13993,6 +14739,128 @@ type PagesFields_slug_Update {
 }
 
 type PagesFields_slug_Delete {
+  permission: Boolean!
+}
+
+type PagesFields_Categories {
+  create: PagesFields_Categories_Create
+  read: PagesFields_Categories_Read
+  update: PagesFields_Categories_Update
+  delete: PagesFields_Categories_Delete
+}
+
+type PagesFields_Categories_Create {
+  permission: Boolean!
+}
+
+type PagesFields_Categories_Read {
+  permission: Boolean!
+}
+
+type PagesFields_Categories_Update {
+  permission: Boolean!
+}
+
+type PagesFields_Categories_Delete {
+  permission: Boolean!
+}
+
+type PagesFields_Accordion {
+  create: PagesFields_Accordion_Create
+  read: PagesFields_Accordion_Read
+  update: PagesFields_Accordion_Update
+  delete: PagesFields_Accordion_Delete
+  fields: PagesFields_Accordion_Fields
+}
+
+type PagesFields_Accordion_Create {
+  permission: Boolean!
+}
+
+type PagesFields_Accordion_Read {
+  permission: Boolean!
+}
+
+type PagesFields_Accordion_Update {
+  permission: Boolean!
+}
+
+type PagesFields_Accordion_Delete {
+  permission: Boolean!
+}
+
+type PagesFields_Accordion_Fields {
+  Heading: PagesFields_Accordion_Heading
+  Description: PagesFields_Accordion_Description
+  id: PagesFields_Accordion_id
+}
+
+type PagesFields_Accordion_Heading {
+  create: PagesFields_Accordion_Heading_Create
+  read: PagesFields_Accordion_Heading_Read
+  update: PagesFields_Accordion_Heading_Update
+  delete: PagesFields_Accordion_Heading_Delete
+}
+
+type PagesFields_Accordion_Heading_Create {
+  permission: Boolean!
+}
+
+type PagesFields_Accordion_Heading_Read {
+  permission: Boolean!
+}
+
+type PagesFields_Accordion_Heading_Update {
+  permission: Boolean!
+}
+
+type PagesFields_Accordion_Heading_Delete {
+  permission: Boolean!
+}
+
+type PagesFields_Accordion_Description {
+  create: PagesFields_Accordion_Description_Create
+  read: PagesFields_Accordion_Description_Read
+  update: PagesFields_Accordion_Description_Update
+  delete: PagesFields_Accordion_Description_Delete
+}
+
+type PagesFields_Accordion_Description_Create {
+  permission: Boolean!
+}
+
+type PagesFields_Accordion_Description_Read {
+  permission: Boolean!
+}
+
+type PagesFields_Accordion_Description_Update {
+  permission: Boolean!
+}
+
+type PagesFields_Accordion_Description_Delete {
+  permission: Boolean!
+}
+
+type PagesFields_Accordion_id {
+  create: PagesFields_Accordion_id_Create
+  read: PagesFields_Accordion_id_Read
+  update: PagesFields_Accordion_id_Update
+  delete: PagesFields_Accordion_id_Delete
+}
+
+type PagesFields_Accordion_id_Create {
+  permission: Boolean!
+}
+
+type PagesFields_Accordion_id_Read {
+  permission: Boolean!
+}
+
+type PagesFields_Accordion_id_Update {
+  permission: Boolean!
+}
+
+type PagesFields_Accordion_id_Delete {
   permission: Boolean!
 }
 
@@ -14877,6 +15745,7 @@ type PostsFields_Itinary_Delete {
 type PostsFields_Itinary_Fields {
   Heading: PostsFields_Itinary_Heading
   Description: PostsFields_Itinary_Description
+  DescriptionImages: PostsFields_Itinary_DescriptionImages
   id: PostsFields_Itinary_id
 }
 
@@ -14923,6 +15792,81 @@ type PostsFields_Itinary_Description_Update {
 }
 
 type PostsFields_Itinary_Description_Delete {
+  permission: Boolean!
+}
+
+type PostsFields_Itinary_DescriptionImages {
+  create: PostsFields_Itinary_DescriptionImages_Create
+  read: PostsFields_Itinary_DescriptionImages_Read
+  update: PostsFields_Itinary_DescriptionImages_Update
+  delete: PostsFields_Itinary_DescriptionImages_Delete
+  fields: PostsFields_Itinary_DescriptionImages_Fields
+}
+
+type PostsFields_Itinary_DescriptionImages_Create {
+  permission: Boolean!
+}
+
+type PostsFields_Itinary_DescriptionImages_Read {
+  permission: Boolean!
+}
+
+type PostsFields_Itinary_DescriptionImages_Update {
+  permission: Boolean!
+}
+
+type PostsFields_Itinary_DescriptionImages_Delete {
+  permission: Boolean!
+}
+
+type PostsFields_Itinary_DescriptionImages_Fields {
+  media: PostsFields_Itinary_DescriptionImages_media
+  id: PostsFields_Itinary_DescriptionImages_id
+}
+
+type PostsFields_Itinary_DescriptionImages_media {
+  create: PostsFields_Itinary_DescriptionImages_media_Create
+  read: PostsFields_Itinary_DescriptionImages_media_Read
+  update: PostsFields_Itinary_DescriptionImages_media_Update
+  delete: PostsFields_Itinary_DescriptionImages_media_Delete
+}
+
+type PostsFields_Itinary_DescriptionImages_media_Create {
+  permission: Boolean!
+}
+
+type PostsFields_Itinary_DescriptionImages_media_Read {
+  permission: Boolean!
+}
+
+type PostsFields_Itinary_DescriptionImages_media_Update {
+  permission: Boolean!
+}
+
+type PostsFields_Itinary_DescriptionImages_media_Delete {
+  permission: Boolean!
+}
+
+type PostsFields_Itinary_DescriptionImages_id {
+  create: PostsFields_Itinary_DescriptionImages_id_Create
+  read: PostsFields_Itinary_DescriptionImages_id_Read
+  update: PostsFields_Itinary_DescriptionImages_id_Update
+  delete: PostsFields_Itinary_DescriptionImages_id_Delete
+}
+
+type PostsFields_Itinary_DescriptionImages_id_Create {
+  permission: Boolean!
+}
+
+type PostsFields_Itinary_DescriptionImages_id_Read {
+  permission: Boolean!
+}
+
+type PostsFields_Itinary_DescriptionImages_id_Update {
+  permission: Boolean!
+}
+
+type PostsFields_Itinary_DescriptionImages_id_Delete {
   permission: Boolean!
 }
 
@@ -19024,6 +19968,8 @@ input mutationPageInput {
   hero: mutationPage_HeroInput!
   layout: JSON
   slug: String
+  Categories: [String]
+  Accordion: [mutationPage_AccordionInput]
   meta: mutationPage_MetaInput
   updatedAt: String
   createdAt: String
@@ -19073,6 +20019,12 @@ enum Page_Hero_Links_Link_appearance_MutationInput {
   secondary
 }
 
+input mutationPage_AccordionInput {
+  Heading: String!
+  Description: String!
+  id: String
+}
+
 input mutationPage_MetaInput {
   title: String
   description: String
@@ -19090,6 +20042,8 @@ input mutationPageUpdateInput {
   hero: mutationPageUpdate_HeroInput!
   layout: JSON
   slug: String
+  Categories: [String]
+  Accordion: [mutationPageUpdate_AccordionInput]
   meta: mutationPageUpdate_MetaInput
   updatedAt: String
   createdAt: String
@@ -19137,6 +20091,12 @@ enum PageUpdate_Hero_Links_Link_appearance_MutationInput {
   default
   primary
   secondary
+}
+
+input mutationPageUpdate_AccordionInput {
+  Heading: String!
+  Description: String!
+  id: String
 }
 
 input mutationPageUpdate_MetaInput {
@@ -19223,6 +20183,12 @@ input mutationPost_HighlightImagesInput {
 input mutationPost_ItinaryInput {
   Heading: String!
   Description: String!
+  DescriptionImages: [mutationPost_Itinary_DescriptionImagesInput]
+  id: String
+}
+
+input mutationPost_Itinary_DescriptionImagesInput {
+  media: String!
   id: String
 }
 
@@ -19321,6 +20287,12 @@ input mutationPostUpdate_HighlightImagesInput {
 input mutationPostUpdate_ItinaryInput {
   Heading: String!
   Description: String!
+  DescriptionImages: [mutationPostUpdate_Itinary_DescriptionImagesInput]
+  id: String
+}
+
+input mutationPostUpdate_Itinary_DescriptionImagesInput {
+  media: String!
   id: String
 }
 

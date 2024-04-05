@@ -16,9 +16,6 @@ type Props = Extract<Page['layout'][0], { blockType: 'mediaBlock' }> & {
 export const MediaBlock: React.FC<Props> = props => {
   const { media, position = 'default', staticImage } = props
 
-  let caption
-  if (media && typeof media === 'object') caption = media.caption
-
   return (
     <div className={classes.mediaBlock}>
       {position === 'fullscreen' && (
@@ -29,11 +26,6 @@ export const MediaBlock: React.FC<Props> = props => {
       {position === 'default' && (
         <Gutter>
           <Media resource={media} src={staticImage} />
-        </Gutter>
-      )}
-      {caption && (
-        <Gutter className={classes.caption}>
-          <RichText content={caption} />
         </Gutter>
       )}
     </div>

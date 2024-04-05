@@ -3,13 +3,16 @@ import { Metadata } from 'next'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
-import { Category, Page } from '../../../payload/payload-types'
+import { Page } from '../../../payload/payload-types'
 import { staticHome } from '../../../payload/seed/home-static'
 import { fetchDoc } from '../../_api/fetchDoc'
 import { fetchDocs } from '../../_api/fetchDocs'
+import Accordion from '../../_components/Accordion'
 import { Blocks } from '../../_components/Blocks'
-import Categories from '../../_components/Categories'
+// import Categories from '../../_components/Categories'
+import CardComponent from '../../_components/CategoryCard'
 import { Hero } from '../../_components/Hero'
+import { HR } from '../../_components/HR'
 import { generateMeta } from '../../_utilities/generateMeta'
 // Payload Cloud caches all files through Cloudflare, so we don't need Next.js to cache them as well
 // This means that we can turn off Next.js data caching and instead rely solely on the Cloudflare CDN
@@ -23,7 +26,6 @@ export default async function Page({ params: { slug = 'home' } }) {
   const { isEnabled: isDraftMode } = draftMode()
 
   let page: Page | null = null
-  let categories: Category[] | null = null
 
   try {
     page = await fetchDoc<Page>({
@@ -31,14 +33,12 @@ export default async function Page({ params: { slug = 'home' } }) {
       slug,
       draft: isDraftMode,
     })
-    categories = await fetchDocs<Category>('categories')
   } catch (error) {
     // when deploying this template on Payload Cloud, this page needs to build before the APIs are live
     // so swallow the error here and simply render the page with fallback data where necessary
     // in production you may want to redirect to a 404  page or at least log the error somewhere
     // console.error(error)
   }
-
   // if no `home` page exists, render a static one using dummy content
   // you should delete this code once you have a home page in the CMS
   // this is really only useful for those who are demoing this template
@@ -50,16 +50,20 @@ export default async function Page({ params: { slug = 'home' } }) {
     return notFound()
   }
 
-  const { hero, layout } = page
+  const { hero, layout, Accordion: accordionData } = page
 
   return (
     <React.Fragment>
       <Hero {...hero} />
-      <Categories categories={categories} />
+      <HR />
+      <CardComponent categories={page.Categories} />
+      <HR />
       <Blocks
         blocks={layout}
         disableTopPadding={!hero || hero?.type === 'none' || hero?.type === 'lowImpact'}
       />
+      <HR />
+      <Accordion accordion={accordionData} />
     </React.Fragment>
   )
 }

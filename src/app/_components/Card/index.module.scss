@@ -6,6 +6,12 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  
+  @include mid-break {
+    overflow: hidden;
+    max-height: 280px;
+  }
+
 }
 
 .vertical {
@@ -45,6 +51,7 @@
 
 .title {
   margin: 0;
+  font-size: 16px;
 }
 
 .titleLink {
@@ -63,10 +70,16 @@
   @extend %label;
   display: flex;
   gap: var(--base);
+  @include small-break{
+    display: none;
+  }
 }
 
 .description {
   margin: 0;
+  @include small-break{
+    display: none;
+  }
 }
 
 .hideImageOnMobile {

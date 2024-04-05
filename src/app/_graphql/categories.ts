@@ -7,4 +7,9 @@ export const CATEGORIES = `categories {
     id
     label
   }
+  media {
+    imagekit {
+      url
+    }
+  }
 }`

@@ -145,8 +145,27 @@ export const Posts: CollectionConfig = {
             },
             {
               name: 'Description',
-              type: 'text',
+              type: 'textarea',
               required: true,
+            },
+            {
+              name: 'DescriptionImages',
+              label: 'Description Images',
+              labels: {
+                singular: 'image',
+                plural: 'Images',
+              },
+              type: 'array',
+              minRows: 2,
+              maxRows: 4,
+              fields: [
+                {
+                  type: 'upload',
+                  name: 'media',
+                  relationTo: 'media',
+                  required: true,
+                },
+              ],
             },
           ],
         },
@@ -175,7 +194,7 @@ export const Posts: CollectionConfig = {
             },
             {
               name: 'Description',
-              type: 'text',
+              type: 'textarea',
               required: true,
             },
           ],

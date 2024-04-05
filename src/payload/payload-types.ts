@@ -164,6 +164,14 @@ export interface Page {
       }
   )[];
   slug?: string | null;
+  Categories: (string | Category)[];
+  Accordion?:
+    | {
+        Heading: string;
+        Description: string;
+        id?: string | null;
+      }[]
+    | null;
   meta?: {
     title?: string | null;
     description?: string | null;
@@ -347,6 +355,12 @@ export interface Post {
     | {
         Heading: string;
         Description: string;
+        DescriptionImages?:
+          | {
+              media: string | Media;
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -376,10 +390,10 @@ export interface Post {
 }
 export interface Project {
   id: string;
-  title: string;
-  categories?: (string | Category)[] | null;
   Days: string;
   Price: number;
+  title: string;
+  categories?: (string | Category)[] | null;
   publishedAt?: string | null;
   hero: {
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';

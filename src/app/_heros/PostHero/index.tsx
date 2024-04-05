@@ -1,12 +1,15 @@
 'use client'
 import React, { Fragment, useState } from 'react'
+// import Link from 'next/link'
+import { BsDash, BsPlus } from 'react-icons/bs'
 import Image from 'next/image'
-import Link from 'next/link'
 
 import { Post } from '../../../payload/payload-types'
+import { Button } from '../../_components/Button'
 import { Gutter } from '../../_components/Gutter'
+import { HR } from '../../_components/HR'
 import { Media } from '../../_components/Media'
-import RichText from '../../_components/RichText'
+// import RichText from '../../_components/RichText'
 import { formatDateTime } from '../../_utilities/formatDateTime'
 
 import classes from './index.module.scss'
@@ -27,8 +30,13 @@ export const PostHero: React.FC<{
     Days,
     Price,
   } = post
+  console.log(Itinary)
 
   const [accordionActive, setAccordionActive] = useState<string | null>(null)
+
+  const handleAccordionClick = (index: number, type: string) => {
+    setAccordionActive(prevState => (prevState === `${type}-${index}` ? null : `${type}-${index}`))
+  }
 
   return (
     <Fragment>
@@ -98,13 +106,16 @@ export const PostHero: React.FC<{
         <div className={classes.additionalData}>
           <div className={classes.priceFlex}>
             <div>
-              <h4>Price: {Price}</h4>
+              <h5>From USD {Price} based on people sharing</h5>
             </div>
             <div>
-              <h4>Days: {Days}</h4>
+              <h5>{Days} Days</h5>
             </div>
+            {/* TODO:add enquiry button */}
+            <Button />
           </div>
           <h4 className={classes.imageHighlight}>Highlight</h4>
+          <HR />
           <div className={classes.imageFlex}>
             <ul className="images">
               {HighlightImages.map((image, index) => (
@@ -122,37 +133,46 @@ export const PostHero: React.FC<{
               ))}
             </ul>
           </div>
+          <HR />
 
           <h3 className={classes.imageHighlight}>Itinerary</h3>
           <ul className={classes.itineraryList}>
             {Itinary.map((item, index) => (
               <li key={index}>
                 <button
-                  className={classes.accordion}
-                  onClick={() =>
-                    setAccordionActive(
-                      accordionActive === `itinerary-${index}` ? null : `itinerary-${index}`,
-                    )
-                  }
+                  className={`${classes.accordion} ${
+                    accordionActive === `itinerary-${index}` ? classes.active : ''
+                  }`}
+                  onClick={() => handleAccordionClick(index, 'itinerary')}
                 >
+                  <span className={classes.icon}>
+                    {accordionActive === `itinerary-${index}` ? <BsDash /> : <BsPlus />}{' '}
+                    {/* Render plus or minus icon */}
+                  </span>
                   {item.Heading}
                 </button>
                 {accordionActive === `itinerary-${index}` && <p>{item.Description}</p>}
               </li>
             ))}
           </ul>
-          <h3 className={classes.imageHighlight}>Good to Know </h3>
+        </div>
+        <HR />
+
+        <div>
+          <h3 className={classes.imageHighlight}>Good to Know</h3>
           <ul className={classes.itineraryList}>
             {GoodToKnowExample.map((item, index) => (
               <li key={index}>
                 <button
-                  className={classes.accordion}
-                  onClick={() =>
-                    setAccordionActive(
-                      accordionActive === `goodToKnow-${index}` ? null : `goodToKnow-${index}`,
-                    )
-                  }
+                  className={`${classes.accordion} ${
+                    accordionActive === `goodToKnow-${index}` ? classes.active : ''
+                  }`}
+                  onClick={() => handleAccordionClick(index, 'goodToKnow')}
                 >
+                  <span className={classes.icon}>
+                    {accordionActive === `goodToKnow-${index}` ? <BsDash /> : <BsPlus />}{' '}
+                    {/* Render plus or minus icon */}
+                  </span>
                   {item.Heading}
                 </button>
                 {accordionActive === `goodToKnow-${index}` && <p>{item.Description}</p>}
