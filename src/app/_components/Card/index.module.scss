@@ -1,7 +1,7 @@
 @import '../../_css/common';
 
 .card  {
-  border: 1px var(--theme-elevation-200) solid;
+  border: 1px solid #beafaf;
   border-radius: 4px;
   max-height: 400px;
   height: 100%;
@@ -54,11 +54,12 @@
 .title {
   margin: 0;
   font-size: 16px;
+  color: #2b2727;
 }
 
 .titleLink {
   text-decoration: none;
-  color: #b88d5e;
+  color: #2b2727;
 }
 
 .centerAlign {
