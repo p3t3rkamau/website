@@ -6,12 +6,13 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { Category, Footer, Media } from '../../../../payload/payload-types'
-import { ThemeSelector } from '../../../_providers/Theme/ThemeSelector'
+// import { ThemeSelector } from '../../../_providers/Theme/ThemeSelector'
 import { inclusions, noHeaderFooterUrls, profileNavItems } from '../../../constants'
 import { Button } from '../../Button'
 import { Gutter } from '../../Gutter'
-import { CMSLink } from '../../Link'
+import { HR } from '../../HR'
 
+// import { CMSLink } from '../../Link'
 import classes from './index.module.scss'
 
 type FooterComponentProps = {
@@ -32,24 +33,22 @@ const FooterComponent = ({ footer }: { footer: Footer }) => {
 
   return (
     <footer className={noHeaderFooterUrls.includes(pathname) ? classes.hide : ''}>
-      <Gutter>
-        <ul className={classes.inclusions}>
-          {inclusions.map(inclusion => (
-            <li key={inclusion.title}>
-              <Image
-                src={inclusion.icon}
-                alt={inclusion.title}
-                width={36}
-                height={36}
-                className={classes.icon}
-              />
+      <ul className={classes.inclusions}>
+        {inclusions.map(inclusion => (
+          <li key={inclusion.title}>
+            <Image
+              src={inclusion.icon}
+              alt={inclusion.title}
+              width={36}
+              height={36}
+              className={classes.icon}
+            />
 
-              <h5 className={classes.title}>{inclusion.title}</h5>
-              <p>{inclusion.description}</p>
-            </li>
-          ))}
-        </ul>
-      </Gutter>
+            <h5 className={classes.title}>{inclusion.title}</h5>
+            <p>{inclusion.description}</p>
+          </li>
+        ))}
+      </ul>
 
       <div className={classes.footer}>
         <Gutter>
@@ -62,6 +61,7 @@ const FooterComponent = ({ footer }: { footer: Footer }) => {
             <div className={classes.footerWrapper}>
               <div>
                 <h3>Our Website</h3>
+                <HR />
                 <ul>
                   <li>
                     <span className={classes.footerLabel}></span>All Holiday Ideas
@@ -105,6 +105,7 @@ const FooterComponent = ({ footer }: { footer: Footer }) => {
               </div>
               <div className={classes.Footercategories}>
                 <h3>Tours</h3>
+                <HR />
                 {categories.map((category: Category, index: number) => (
                   <li className={classes.footerlist} key={index}>
                     <span>{category.title}</span>
@@ -114,6 +115,7 @@ const FooterComponent = ({ footer }: { footer: Footer }) => {
               {/* <ThemeSelector /> */}
               <div className={classes.InformationSection}>
                 <h3>Experiences</h3>
+                <HR />
                 <ul>
                   <li>Big 5 Safari</li>
                   <li>Beach</li>

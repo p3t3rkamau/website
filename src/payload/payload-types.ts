@@ -783,6 +783,7 @@ export interface Footer {
   navItems?:
     | {
         link: {
+          icon: Media;
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
           reference?: {

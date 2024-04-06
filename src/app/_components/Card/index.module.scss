@@ -3,9 +3,11 @@
 .card  {
   border: 1px var(--theme-elevation-200) solid;
   border-radius: 4px;
+  max-height: 400px;
   height: 100%;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   
   @include mid-break {
     overflow: hidden;
@@ -56,6 +58,7 @@
 
 .titleLink {
   text-decoration: none;
+  color: #b88d5e;
 }
 
 .centerAlign {
@@ -69,6 +72,8 @@
 .leader {
   @extend %label;
   display: flex;
+  font-size: 12px;
+  color: #b88d5e;
   gap: var(--base);
   @include small-break{
     display: none;
@@ -77,6 +82,7 @@
 
 .description {
   margin: 0;
+  font-size: 12px;
   @include small-break{
     display: none;
   }

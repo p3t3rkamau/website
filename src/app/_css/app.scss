@@ -24,11 +24,12 @@
 
 * {
   box-sizing: border-box;
+  scroll-behavior: smooth
 }
 
 html {
   @extend %body;
-  background: var(--theme-bg);
+  background: #f6efe7;
   -webkit-font-smoothing: antialiased;
   opacity: 0;
 
@@ -68,6 +69,8 @@ img {
 
 h1 {
   @extend %h1;
+  background-color:var(--theme-success-500);
+  width: fit-content 
 }
 
 h2 {

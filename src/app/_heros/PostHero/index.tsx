@@ -1,6 +1,5 @@
 'use client'
 import React, { Fragment, useState } from 'react'
-// import Link from 'next/link'
 import { BsDash, BsPlus } from 'react-icons/bs'
 import Image from 'next/image'
 
@@ -9,7 +8,6 @@ import { Button } from '../../_components/Button'
 import { Gutter } from '../../_components/Gutter'
 import { HR } from '../../_components/HR'
 import { Media } from '../../_components/Media'
-// import RichText from '../../_components/RichText'
 import { formatDateTime } from '../../_utilities/formatDateTime'
 
 import classes from './index.module.scss'
@@ -18,7 +16,6 @@ export const PostHero: React.FC<{
   post: Post
 }> = ({ post }) => {
   const {
-    id,
     title,
     categories,
     meta: { image: metaImage, description } = {},
@@ -30,7 +27,6 @@ export const PostHero: React.FC<{
     Days,
     Price,
   } = post
-  console.log(Itinary)
 
   const [accordionActive, setAccordionActive] = useState<string | null>(null)
 
@@ -47,9 +43,7 @@ export const PostHero: React.FC<{
               {categories?.map((category, index) => {
                 if (typeof category === 'object' && category !== null) {
                   const { title: categoryTitle } = category
-
                   const titleToUse = categoryTitle || 'Untitled category'
-
                   const isLast = index === categories.length - 1
 
                   return (
@@ -70,7 +64,6 @@ export const PostHero: React.FC<{
                 {'By '}
                 {populatedAuthors.map((author, index) => {
                   const { name } = author
-
                   const isLast = index === populatedAuthors.length - 1
                   const secondToLast = index === populatedAuthors.length - 2
 
@@ -111,7 +104,6 @@ export const PostHero: React.FC<{
             <div>
               <h5>{Days} Days</h5>
             </div>
-            {/* TODO:add enquiry button */}
             <Button />
           </div>
           <h4 className={classes.imageHighlight}>Highlight</h4>
@@ -147,38 +139,55 @@ export const PostHero: React.FC<{
                 >
                   <span className={classes.icon}>
                     {accordionActive === `itinerary-${index}` ? <BsDash /> : <BsPlus />}{' '}
-                    {/* Render plus or minus icon */}
                   </span>
                   {item.Heading}
                 </button>
-                {accordionActive === `itinerary-${index}` && <p>{item.Description}</p>}
+                {accordionActive === `itinerary-${index}` && (
+                  <Fragment>
+                    <p>{item.Description}</p>
+                    {item.DescriptionImages && item.DescriptionImages.length > 0 && (
+                      <div className={classes.HighlightImg}>
+                        {item.DescriptionImages.map((descImage, descIndex) => (
+                          <Image
+                            key={descIndex}
+                            src={descImage.media.imagekit.url}
+                            width={400}
+                            height={350}
+                            className={classes.img}
+                            alt={`Image ${descIndex + 1}`}
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </Fragment>
+                )}
               </li>
             ))}
           </ul>
-        </div>
-        <HR />
 
-        <div>
-          <h3 className={classes.imageHighlight}>Good to Know</h3>
-          <ul className={classes.itineraryList}>
-            {GoodToKnowExample.map((item, index) => (
-              <li key={index}>
-                <button
-                  className={`${classes.accordion} ${
-                    accordionActive === `goodToKnow-${index}` ? classes.active : ''
-                  }`}
-                  onClick={() => handleAccordionClick(index, 'goodToKnow')}
-                >
-                  <span className={classes.icon}>
-                    {accordionActive === `goodToKnow-${index}` ? <BsDash /> : <BsPlus />}{' '}
-                    {/* Render plus or minus icon */}
-                  </span>
-                  {item.Heading}
-                </button>
-                {accordionActive === `goodToKnow-${index}` && <p>{item.Description}</p>}
-              </li>
-            ))}
-          </ul>
+          <HR />
+
+          <div>
+            <h3 className={classes.imageHighlight}>Good to Know</h3>
+            <ul className={classes.itineraryList}>
+              {GoodToKnowExample.map((item, index) => (
+                <li key={index}>
+                  <button
+                    className={`${classes.accordion} ${
+                      accordionActive === `goodToKnow-${index}` ? classes.active : ''
+                    }`}
+                    onClick={() => handleAccordionClick(index, 'goodToKnow')}
+                  >
+                    <span className={classes.icon}>
+                      {accordionActive === `goodToKnow-${index}` ? <BsDash /> : <BsPlus />}{' '}
+                    </span>
+                    {item.Heading}
+                  </button>
+                  {accordionActive === `goodToKnow-${index}` && <p>{item.Description}</p>}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </Gutter>
     </Fragment>

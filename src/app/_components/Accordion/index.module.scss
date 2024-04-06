@@ -11,8 +11,9 @@
   }
   
   .accordion {
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #263137;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    color: #f8f5f5;
     cursor: pointer;
     padding: 15px;
     width: 100%;
@@ -20,20 +21,20 @@
     margin: 2px;
     border: none;
     outline: none;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.6s ease;
   }
   
   .accordion:hover {
-    background-color: #e0e0e0;
+    background-color: #b88d5e;
   }
   
   .accordion.active {
-    background-color: #ddd;
+    background-color: #b88d5e;
   }
   
   .accordion p {
     padding: 10px;
-    background-color: #fafafa;
+    background-color: #e4dbdb;
   }
   
   .expandButton {
@@ -43,8 +44,8 @@
     width: 100%;
     text-align: center;
     padding: 10px;
-    background-color: #eee7e7;
-    color: #333;
+    background-color: #05051fdc;
+    color: #ffffff;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -52,6 +53,6 @@
   }
   
   .expandButton:hover {
-    background-color: #e0e0e0;
+    background-color:#2e114e;
   }
   

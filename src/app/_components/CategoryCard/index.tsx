@@ -1,16 +1,15 @@
 import React from 'react'
 import Image from 'next/image'
 
-import { Gutter } from '../Gutter'
-
+// import { Gutter } from '../Gutter'
 import classes from './index.module.scss'
 
 const CardComponent = ({ categories }) => {
   return (
-    <Gutter>
+    <>
       <h3 className={classes.categoryHeader}>Popular Categories</h3>
       <div className={classes.CardComponent}>
-        {categories.map(category => (
+        {categories?.map(category => (
           <div className={classes.card} key={category.title}>
             {category.media && category.media.imagekit && (
               <Image
@@ -25,7 +24,7 @@ const CardComponent = ({ categories }) => {
           </div>
         ))}
       </div>
-    </Gutter>
+    </>
   )
 }
 

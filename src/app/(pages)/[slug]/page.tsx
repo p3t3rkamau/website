@@ -13,6 +13,7 @@ import { Blocks } from '../../_components/Blocks'
 import CardComponent from '../../_components/CategoryCard'
 import { Hero } from '../../_components/Hero'
 import { HR } from '../../_components/HR'
+import Testimonials from '../../_components/Testimonials'
 import { generateMeta } from '../../_utilities/generateMeta'
 // Payload Cloud caches all files through Cloudflare, so we don't need Next.js to cache them as well
 // This means that we can turn off Next.js data caching and instead rely solely on the Cloudflare CDN
@@ -63,6 +64,7 @@ export default async function Page({ params: { slug = 'home' } }) {
         disableTopPadding={!hero || hero?.type === 'none' || hero?.type === 'lowImpact'}
       />
       <HR />
+      <Testimonials />
       <Accordion accordion={accordionData} />
     </React.Fragment>
   )

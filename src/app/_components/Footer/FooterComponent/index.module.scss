@@ -2,14 +2,15 @@
 
 .footer {
   padding: 0;
-  background-color: rgb(189, 190, 131);
+  background-color: #b88d5e;
   color: var(--theme-elevation-0);
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
   margin: 0;
   list-style: none;
   list-style-type: none;
 
   @include small-break {
-    padding: calc(var(--base) * 2) 0;
+    padding: 0;
   }
 }
 
@@ -28,7 +29,7 @@
   padding: 50px;
   grid-template-columns: repeat(4, 1fr);
   margin: 50px 50px;
-  background-color: rgb(153, 109, 109);
+  background-color: #b88d5e;
   color: white;
   @include small-break {
     grid-template-columns: repeat(2, 1fr);
@@ -41,21 +42,20 @@
 
   @include extra-small-break {
     grid-template-columns: repeat(2, 1fr);
-    margin: 60px 0;
+    margin: 5px;
+    padding: 5px;
   }
 }
 
 .icon {
   margin-bottom: 16px;
-}
-
-
-:global([data-theme='dark']) {
-  .footer {
-    background-color: var(--theme-elevation-50);
-    color: var(--theme-elevation-1000);
+  @include extra-small-break {
+    margin-bottom: 5px;
   }
+
 }
+
+
 
 .wrap {
   display: flex;

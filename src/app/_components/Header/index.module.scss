@@ -2,6 +2,8 @@
 
 .header {
   padding: var(--base) 0;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 .wrap {
@@ -17,17 +19,11 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    width: 180px;
-    width: 50%;
+    width: 100px;
 
   }
 }
 
-:global([data-theme="light"]) {
-  .logo {
-    filter: invert(1);
-  }
-}
 
 .mobileMenuIcon {
   display: none; /* Hide the icon by default on larger screens */

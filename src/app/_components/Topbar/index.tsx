@@ -1,5 +1,5 @@
 import React from 'react'
-import { IoCall } from 'react-icons/io5'
+import { IoIosMail } from 'react-icons/io'
 import { MdPhoneCallback } from 'react-icons/md'
 
 import classes from './index.module.scss'
@@ -12,9 +12,9 @@ const TopBar = () => {
       <div className={classes.callFLex}>
         <div>
           <span>
-            <IoCall />
+            <IoIosMail />
           </span>
-          <span>+254 751 142 410</span>
+          <span>tours@berleensafaris.com</span>
         </div>
         <div>
           <span className={classes.phoneIcon}>

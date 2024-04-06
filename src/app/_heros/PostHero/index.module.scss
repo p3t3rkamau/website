@@ -93,8 +93,9 @@
 
 /* Style for the accordion button */
 button.accordion {
-  background-color: #e6d0d0;
-  color: black;
+  background-color: #263137;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+  color: rgb(255, 255, 255);
   cursor: pointer;
   padding: 20px;
   margin: 2px;
@@ -107,14 +108,14 @@ button.accordion {
 
 /* Style for the active accordion button */
 button.accordion.active {
-  background-color: #ccc;
+  background-color: #b88d5e;
 }
 
 /* Style for the accordion content */
 button.accordion + div {
   display: none;
   padding: 10px;
-  background-color: #f9f9f9;
+  background-color: #f0cdcd;
 }
 
 /* Style for the active accordion content */
@@ -162,6 +163,8 @@ button.accordion.active + div {
 }
 .imageWrapper {
   list-style: none;
+  color: var(--theme-elevation-0);
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
   padding: 0;
   margin: 0;
   display: flex;
@@ -180,6 +183,7 @@ button.accordion.active + div {
     min-height: 250px;
     max-height: 250px;
     gap: 5px;
+    flex-wrap: wrap;
   }
 
   @include small-break {
@@ -198,7 +202,7 @@ button.accordion.active + div {
   margin: 20p;
   padding:0 20px 0 20px;
   color: #333; 
-  background-color: rgb(189, 190, 131);
+  background-color: #b88d5e;
 }
 .images li {
   margin-right: 10px; /* Adjust as needed */
@@ -218,8 +222,7 @@ button.accordion.active + div {
   height: 100px; /* Adjust as needed */
   object-fit: cover; /* Ensure images maintain aspect ratio */
   border-radius: 8px;
- 
-  border: 2px solid red; /* Add border radius for rounded corners */
+  /* Add border radius for rounded corners */
 }
 .imageFlex ul{
   display: flex;
@@ -235,4 +238,43 @@ button.accordion.active + div {
 .itineraryList{
   list-style: none;
   padding: 10px;
+}
+.HighlightImg{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0 20px 0;
+  gap: 20px;
+  @include mid-break{
+    overflow: scroll;
+    gap: 4px;
+  }
+  @include small-break{
+    overflow: scroll;
+    gap: 4px;
+   }
+}
+.HighlightImg::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for webkit browsers */
+}
+
+/* Optional: Hide scrollbar for Firefox */
+.HighlightImg {
+  scrollbar-width: none;
+}
+.img{
+ object-fit: cover;
+ border: 1px solid #263137;
+
+ min-width: 230px;
+ aspect-ratio:  2/3;
+ max-width: 250px;
+ @include mid-break{
+  max-width: 200px;
+  gap: 4px;
+ }
+ @include small-break{
+  max-width: 100px;
+  gap: 4px;
+ }
 }

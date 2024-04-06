@@ -2,7 +2,8 @@
 
 .footer {
   padding: calc(var(--base) * 4) 0;
-  background-color: var(--theme-elevation-1000);
+  background-color: #2472c5;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
   color: var(--theme-elevation-0);
 
   @include small-break {
@@ -10,12 +11,6 @@
   }
 }
 
-:global([data-theme="dark"]) {
-  .footer {
-    background-color: var(--theme-elevation-50);
-    color: var(--theme-elevation-1000);
-  }
-}
 
 .wrap {
   display: flex;

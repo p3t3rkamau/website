@@ -47,8 +47,6 @@ export const POST = `
           title
           media {
             imagekit {
-              fileId
-              thumbnailUrl
               url
             }
           }
@@ -56,6 +54,16 @@ export const POST = `
         Itinary {
           Heading
           Description
+          DescriptionImages {
+            media {
+              imagekit {
+                fileId
+                thumbnailUrl
+                url
+              }
+            }
+          }
+
         }
         GoodToKnowExample {
           Heading

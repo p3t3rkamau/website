@@ -19,16 +19,24 @@
   .card {
     margin: 10px;
     text-align: center;
-    border: .5px solid rgb(58, 54, 54);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: .5px solid rgba(231, 225, 225, 0.952);
     padding: 3px;
     border-radius: 10px;
-    @include small-break {
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: ease-in-out;
+    cursor: pointer;
+    @include small-break{
       border: none;
-      margin: 3px;
-      border-radius: 5px;
+    }
+    
   }
+  .card:hover{
+    scale: 1.1;
+    transition: .1s ease;
   }
-  
   .card h3 {
     margin-top: 10px; /* Adjust as needed */
   }
@@ -39,15 +47,14 @@
     max-height: 250px;
     object-fit: cover;
     @include small-break {
-        max-width: 150px;
-        min-height: 180px;
+        max-width: 280px;
+        min-height: 200px;
         max-height: 200px;
-        align-items: center;
-        display: flex;
+        min-width: 250px;
+        overflow: hidden;
         justify-content: center;
-        margin: 0;
-        padding: 0;
-        gap: 2px;
+        align-items: center;
+        border-radius: 0;
     }
   }
   .categoryHeader{
