@@ -21,11 +21,14 @@
     cursor: pointer;
     @include small-break{
         padding: 0 10px;
-        width: 80%;
+        width: 60%;
     }
 }
 .phoneIcon{
     margin: 0 10px 0 10px;
+    @include small-break{
+        display: none; 
+    }
 }
 .callback{
     @include small-break{
