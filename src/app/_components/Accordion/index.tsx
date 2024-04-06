@@ -3,6 +3,7 @@ import React, { Fragment, useState } from 'react'
 import { BsDash, BsPlus } from 'react-icons/bs' // Import plus and minus icons from React Icons
 
 import { Gutter } from '../Gutter'
+import { HR } from '../HR'
 
 import classes from './index.module.scss'
 
@@ -49,6 +50,7 @@ const Accordion = ({ accordion }) => {
             Show More
           </button>
         )}
+        <HR />
       </Gutter>
     </Fragment>
   )

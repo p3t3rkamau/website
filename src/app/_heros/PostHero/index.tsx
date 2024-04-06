@@ -99,14 +99,21 @@ export const PostHero: React.FC<{
         <div className={classes.additionalData}>
           <div className={classes.priceFlex}>
             <div>
-              <h5>From USD {Price} based on people sharing</h5>
+              <h5>
+                <span>From USD </span>
+                {Price}
+                <span> based on people sharing</span>
+              </h5>
             </div>
             <div>
-              <h5>{Days} Days</h5>
+              <h6>
+                {Days}
+                <span> Days</span>
+              </h6>
             </div>
             <Button />
           </div>
-          <h4 className={classes.imageHighlight}>Highlight</h4>
+          <h4 className={classes.imageHighlight}>Highlights</h4>
           <HR />
           <div className={classes.imageFlex}>
             <ul className="images">

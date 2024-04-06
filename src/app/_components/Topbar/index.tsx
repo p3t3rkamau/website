@@ -16,11 +16,11 @@ const TopBar = () => {
           </span>
           <span>tours@berleensafaris.com</span>
         </div>
-        <div>
-          <span className={classes.phoneIcon}>
+        <div className={classes.phoneIcon}>
+          <span>
             <MdPhoneCallback />
           </span>
-          <span>Request a Callback</span>
+          <span className={classes.callback}>Request a Callback</span>
         </div>
       </div>
     </div>
