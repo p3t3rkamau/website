@@ -10,8 +10,8 @@ import { Category, Footer, Media } from '../../../../payload/payload-types'
 import { inclusions, noHeaderFooterUrls, profileNavItems } from '../../../constants'
 import { Button } from '../../Button'
 import { Gutter } from '../../Gutter'
-import { HR } from '../../HR'
 
+// import { HR } from '../../HR'
 // import { CMSLink } from '../../Link'
 import classes from './index.module.scss'
 
@@ -61,7 +61,7 @@ const FooterComponent = ({ footer }: { footer: Footer }) => {
             <div className={classes.footerWrapper}>
               <div>
                 <h3>Our Website</h3>
-                <HR />
+                <hr />
                 <ul>
                   <li>
                     <span className={classes.footerLabel}></span>All Holiday Ideas
@@ -105,7 +105,7 @@ const FooterComponent = ({ footer }: { footer: Footer }) => {
               </div>
               <div className={classes.Footercategories}>
                 <h3>Tours</h3>
-                <HR />
+                <hr />
                 {categories.map((category: Category, index: number) => (
                   <li className={classes.footerlist} key={index}>
                     <span>{category.title}</span>
@@ -115,7 +115,7 @@ const FooterComponent = ({ footer }: { footer: Footer }) => {
               {/* <ThemeSelector /> */}
               <div className={classes.InformationSection}>
                 <h3>Experiences</h3>
-                <HR />
+                <hr />
                 <ul>
                   <li>Big 5 Safari</li>
                   <li>Beach</li>

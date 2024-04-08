@@ -9,6 +9,7 @@
 export interface Config {
   collections: {
     pages: Page;
+    Reviews: Review;
     posts: Post;
     projects: Project;
     media: Media;
@@ -47,6 +48,7 @@ export interface Page {
             } | null;
             url?: string | null;
             label: string;
+            icon?: string | Media | null;
             appearance?: ('default' | 'primary' | 'secondary') | null;
           };
           id?: string | null;
@@ -71,6 +73,7 @@ export interface Page {
                 } | null;
                 url?: string | null;
                 label: string;
+                icon?: string | Media | null;
                 appearance?: ('primary' | 'secondary') | null;
               };
               id?: string | null;
@@ -98,6 +101,7 @@ export interface Page {
                 } | null;
                 url?: string | null;
                 label: string;
+                icon?: string | Media | null;
                 appearance?: ('default' | 'primary' | 'secondary') | null;
               };
               id?: string | null;
@@ -235,6 +239,7 @@ export interface Post {
             } | null;
             url?: string | null;
             label: string;
+            icon?: string | Media | null;
             appearance?: ('default' | 'primary' | 'secondary') | null;
           };
           id?: string | null;
@@ -259,6 +264,7 @@ export interface Post {
                 } | null;
                 url?: string | null;
                 label: string;
+                icon?: string | Media | null;
                 appearance?: ('primary' | 'secondary') | null;
               };
               id?: string | null;
@@ -286,6 +292,7 @@ export interface Post {
                 } | null;
                 url?: string | null;
                 label: string;
+                icon?: string | Media | null;
                 appearance?: ('default' | 'primary' | 'secondary') | null;
               };
               id?: string | null;
@@ -411,6 +418,7 @@ export interface Project {
             } | null;
             url?: string | null;
             label: string;
+            icon?: string | Media | null;
             appearance?: ('default' | 'primary' | 'secondary') | null;
           };
           id?: string | null;
@@ -435,6 +443,7 @@ export interface Project {
                 } | null;
                 url?: string | null;
                 label: string;
+                icon?: string | Media | null;
                 appearance?: ('primary' | 'secondary') | null;
               };
               id?: string | null;
@@ -462,6 +471,7 @@ export interface Project {
                 } | null;
                 url?: string | null;
                 label: string;
+                icon?: string | Media | null;
                 appearance?: ('default' | 'primary' | 'secondary') | null;
               };
               id?: string | null;
@@ -678,6 +688,16 @@ export interface Form {
   updatedAt: string;
   createdAt: string;
 }
+export interface Review {
+  id: string;
+  user?: (string | null) | User;
+  review?: string | null;
+  name?: string | null;
+  message?: string | null;
+  rating: '0' | '0.5' | '1' | '1.5' | '2' | '2.5' | '3' | '3.5' | '4' | '4.5' | '5';
+  updatedAt: string;
+  createdAt: string;
+}
 export interface Comment {
   id: string;
   user?: (string | null) | User;
@@ -769,6 +789,7 @@ export interface Header {
           } | null;
           url?: string | null;
           label: string;
+          icon?: string | Media | null;
         };
         id?: string | null;
       }[]
@@ -783,7 +804,6 @@ export interface Footer {
   navItems?:
     | {
         link: {
-          icon: Media;
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
           reference?: {
@@ -792,6 +812,7 @@ export interface Footer {
           } | null;
           url?: string | null;
           label: string;
+          icon?: string | Media | null;
         };
         id?: string | null;
       }[]

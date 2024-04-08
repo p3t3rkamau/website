@@ -1,0 +1,132 @@
+@use '../../../_css/queries.scss' as *;
+
+.supaviews,
+.supaview,
+.supaerror {
+    border-radius: 10px;
+}
+
+.supaviews {
+    position: relative;
+    width: 900px;
+    margin: 50px 0 50px 0;
+    color: #FFFFFF;
+    background-repeat: no-repeat;
+    @include small-break{
+        width: 100%;
+        margin: 0;
+    }
+    
+}
+
+.supaviews__logo {
+    position: absolute;
+    width: 200px;
+    right: -55px;
+    top: -100px;
+    transition: 0.2s ease-in-out;
+}
+
+.supaviews__logo:hover {
+    transform: scale(1.1);
+}
+
+.supaviews__gradient {
+    position: absolute;
+    right: 50px;
+    top: 0;
+    z-index: -1;
+    display: block;
+    height: 1100px;
+    width: 1100px;
+    transform: translate(50%, -50%);
+}
+
+.supaview,
+.supaerror {
+    margin: 20px;
+    padding: 25px;
+    background-color: #24262B;
+}
+.supaview__copy{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0 10px 0;
+}
+.supaview__copy input{
+    outline: none;
+    padding: 10px;
+    background-color: #24262B;
+    border: none;
+    border: 1px solid rgb(121, 116, 116);
+    border-radius: 10px;
+}
+.supaview__copy textarea{
+    outline: none;
+    padding: 5px;
+    border: 1px solid rgb(121, 116, 116);
+    margin: 5px 0;
+    border-radius: 10px;
+    background-color: #24262B;;
+}
+.supaview__stars {
+    margin-bottom: 15px;
+    font-size: 25px;
+    color: #fff;
+}
+
+.supaview__stars .checked {
+    color: #6ECB90;
+    text-shadow: 0 0 6px #4DA76EBD;
+}
+
+.supaview__name {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.supaview__date {
+    margin-top: 15px;
+    color: #7D7F81;
+}
+
+
+
+.supaview__submit {
+    padding: 10px 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    background-color: #64B883;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    outline: none;
+    transition: 0.2s ease-in-out;
+}
+
+.supaview__submit:hover {
+    background-color: #6ECB90;
+}
+
+.supaerror {
+    background-color: #E56460;
+}
+.supaview__rating {
+    display: flex;
+  }
+  
+  .supaview__rating input[type="radio"] {
+    display: none;
+  }
+  
+  .supaview__rating label {
+    display: inline-block;
+    cursor: pointer;
+    color: #ccc;
+    font-size: 24px;
+  }
+  
+  .supaview__rating input[type="radio"]:checked ~ label {
+    background-color: #ffc107; /* Change the color of selected stars */
+  }
+  

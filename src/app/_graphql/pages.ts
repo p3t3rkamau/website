@@ -33,6 +33,7 @@ export const PAGE = `
           ${CONTENT}
           ${MEDIA_BLOCK}
           ${ARCHIVE_BLOCK}
+          
         }
         ${META}
         Categories{

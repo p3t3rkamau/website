@@ -9,6 +9,13 @@ export const LINK_FIELDS = ({ disableAppearance, disableLabel }: Args = {}): str
   type
   newTab
   url
+  icon {
+    imagekit {
+      fileId
+      thumbnailUrl
+      url
+    }
+  }
   reference {
     relationTo
     value {

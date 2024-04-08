@@ -43,15 +43,6 @@ export const ProjectHero: React.FC<{
             </div>
           </div>
           <h1 className={classes.title}>{title}</h1>
-          <div>
-            <p className={classes.description}>
-              {`${description ? `${description} ` : ''}To edit this project, `}
-              <Link href={`${process.env.NEXT_PUBLIC_SERVER_URL}/admin/collections/projects/${id}`}>
-                navigate to the admin dashboard
-              </Link>
-              {'.'}
-            </p>
-          </div>
         </div>
         <div className={classes.media}>
           <div className={classes.mediaWrapper}>
@@ -60,9 +51,6 @@ export const ProjectHero: React.FC<{
               <Media imgClassName={classes.image} resource={metaImage} fill />
             )}
           </div>
-          {metaImage && typeof metaImage !== 'string' && metaImage?.caption && (
-            <RichText content={metaImage.caption} className={classes.caption} />
-          )}
         </div>
       </Gutter>
     </Fragment>

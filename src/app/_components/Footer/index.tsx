@@ -18,7 +18,7 @@ export async function Footer() {
 
   const navItems = footer?.navItems || []
   const categories = footer?.Categories || []
-  // console.log('footer Categories', categories)
+  console.log('navitems', navItems)
 
   return (
     <>

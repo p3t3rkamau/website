@@ -13,6 +13,7 @@ import { Blocks } from '../../_components/Blocks'
 import CardComponent from '../../_components/CategoryCard'
 import { Hero } from '../../_components/Hero'
 import { HR } from '../../_components/HR'
+import Reviews from '../../_components/Reviews'
 import Testimonials from '../../_components/Testimonials'
 import { generateMeta } from '../../_utilities/generateMeta'
 
@@ -68,6 +69,7 @@ export default async function Page({ params: { slug = 'home' } }) {
       <HR />
       <h3 className={classes.TestimonialHeader}>Reviews</h3>
       <Testimonials />
+      <Reviews />
       <HR />
       <Accordion accordion={accordionData} />
     </React.Fragment>
