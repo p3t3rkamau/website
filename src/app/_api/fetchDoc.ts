@@ -60,6 +60,6 @@ export const fetchDoc = async <T>(args: {
       if (res.errors) throw new Error(res?.errors?.[0]?.message ?? 'Error fetching doc')
       return res?.data?.[queryMap[collection].key]?.docs?.[0]
     })
-
+  console.log('Doc output:', doc)
   return doc
 }

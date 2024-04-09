@@ -73,6 +73,30 @@ export const Pages: CollectionConfig = {
     },
     slugField(),
     {
+      name: 'HighlightImages',
+      label: 'Hero Images',
+      labels: {
+        singular: 'image',
+        plural: 'Images',
+      },
+      type: 'array',
+      minRows: 4,
+      maxRows: 20,
+      fields: [
+        {
+          type: 'upload',
+          name: 'media',
+          relationTo: 'media',
+          required: true,
+        },
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+        },
+      ],
+    },
+    {
       name: 'Categories',
       type: 'relationship',
       relationTo: 'categories',

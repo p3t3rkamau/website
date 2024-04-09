@@ -1,11 +1,10 @@
 import React, { Fragment } from 'react'
 
-import { Page } from '../../../payload/payload-types.js'
+import { Page } from '../../../payload/payload-types'
 import { ArchiveBlock } from '../../_blocks/ArchiveBlock'
 import { CallToActionBlock } from '../../_blocks/CallToAction'
 import { CommentsBlock, type CommentsBlockProps } from '../../_blocks/Comments/index'
 import { ContentBlock } from '../../_blocks/Content'
-import { FormBlock } from '../../_blocks/Form'
 import { MediaBlock } from '../../_blocks/MediaBlock'
 import { RelatedPosts, type RelatedPostsProps } from '../../_blocks/RelatedPosts'
 import { toKebabCase } from '../../_utilities/toKebabCase'
@@ -19,8 +18,8 @@ const blockComponents = {
   archive: ArchiveBlock,
   relatedPosts: RelatedPosts,
   comments: CommentsBlock,
-  formBlock: FormBlock,
 }
+
 export const Blocks: React.FC<{
   blocks: (Page['layout'][0] | RelatedPostsProps | CommentsBlockProps)[]
   disableTopPadding?: boolean
@@ -33,14 +32,12 @@ export const Blocks: React.FC<{
     return (
       <Fragment>
         {blocks.map((block, index) => {
-          const { blockName, blockType, form } = block
+          const { blockName, blockType } = block
+
           // Check if the block has any meaningful content to render
-          if (!blockName && !blockType && !form) {
+          if (!blockName && !blockType) {
             return null // Skip rendering if the block has no contents
           }
-
-          const isFormBlock = blockType === 'formBlock'
-          const formID: string = isFormBlock && form && form.id
 
           if (blockType && blockType in blockComponents) {
             const Block = blockComponents[blockType]
@@ -73,11 +70,7 @@ export const Blocks: React.FC<{
             if (Block) {
               return (
                 <BackgroundColor key={index} invert={blockIsInverted}>
-                  <VerticalPadding
-                    key={isFormBlock ? formID : index}
-                    top={paddingTop}
-                    bottom={paddingBottom}
-                  >
+                  <VerticalPadding key={index} top={paddingTop} bottom={paddingBottom}>
                     {/* @ts-expect-error */}
                     <Block id={toKebabCase(blockName)} {...block} />
                   </VerticalPadding>

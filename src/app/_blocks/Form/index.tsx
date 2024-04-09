@@ -2,7 +2,6 @@
 import React, { useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
-import { Form as FormType } from 'payload-plugin-form-builder/dist/types'
 
 import { Button } from '../../_components/Button'
 import { Gutter } from '../../_components/Gutter'
@@ -12,121 +11,100 @@ import { fields } from './fields'
 
 import classes from './index.module.scss'
 
-export type Value = unknown
-
-export interface Property {
-  [key: string]: Value
+export interface Value {
+  [key: string]: unknown
 }
 
 export interface Data {
-  [key: string]: Value | Property | Property[]
+  [key: string]: Value | Value[]
 }
 
-export type FormBlockType = {
-  blockName?: string
-  blockType?: 'formBlock'
-  enableIntro: Boolean
-  form: FormType
-  introContent?: {
-    [k: string]: unknown
-  }[]
-}
-
-export const FormBlock: React.FC<
-  FormBlockType & {
-    id?: string
+export interface FormProps {
+  form: {
+    id: string
+    fields: any[]
+    submitButtonLabel: string
+    confirmationType: string
+    redirect?: {
+      url: string
+    }
+    confirmationMessage?: {
+      [key: string]: unknown
+    }
   }
-> = props => {
-  console.log('Block props:', props)
+}
+
+const Form: React.FC<FormProps> = ({ form }) => {
   const {
-    enableIntro,
-    introContent,
-    form: formFromProps,
-    form: { id: formID, submitButtonLabel, confirmationType, redirect, confirmationMessage } = {},
-  } = props
+    id: formID,
+    fields: formFields,
+    submitButtonLabel,
+    confirmationType,
+    redirect,
+    confirmationMessage,
+  } = form
 
   const formMethods = useForm({
-    defaultValues: buildInitialFormState(formFromProps.fields),
+    defaultValues: buildInitialFormState(formFields),
   })
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
-    setValue,
-    getValues,
   } = formMethods
 
   const [isLoading, setIsLoading] = useState(false)
-  const [hasSubmitted, setHasSubmitted] = useState<boolean>()
+  const [hasSubmitted, setHasSubmitted] = useState<boolean>(false)
   const [error, setError] = useState<{ status?: string; message: string } | undefined>()
   const router = useRouter()
 
   const onSubmit = useCallback(
-    (data: Data) => {
-      let loadingTimerID: NodeJS.Timer
+    async (data: Data) => {
+      setError(undefined)
+      setIsLoading(true)
 
-      const submitForm = async () => {
-        setError(undefined)
+      try {
+        const req = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/form-submissions`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            form: formID,
+            submissionData: Object.entries(data).map(([name, value]) => ({
+              field: name,
+              value,
+            })),
+          }),
+        })
 
-        const dataToSend = Object.entries(data).map(([name, value]) => ({
-          field: name,
-          value,
-        }))
+        const res = await req.json()
 
-        // delay loading indicator by 1s
-        loadingTimerID = setTimeout(() => {
-          setIsLoading(true)
-        }, 1000)
+        setIsLoading(false)
 
-        try {
-          const req = await fetch(`${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/form-submissions`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              form: formID,
-              submissionData: dataToSend,
-            }),
-          })
-
-          const res = await req.json()
-
-          clearTimeout(loadingTimerID)
-
-          if (req.status >= 400) {
-            setIsLoading(false)
-            setError({
-              status: res.status,
-              message: res.errors?.[0]?.message || 'Internal Server Error',
-            })
-
-            return
-          }
-
-          setIsLoading(false)
-          setHasSubmitted(true)
-
-          if (confirmationType === 'redirect' && redirect) {
-            const { url } = redirect
-
-            const redirectUrl = url
-
-            if (redirectUrl) router.push(redirectUrl)
-          }
-        } catch (err) {
-          console.warn(err)
-          setIsLoading(false)
+        if (req.status >= 400) {
           setError({
-            message: 'Something went wrong.',
+            status: res.status,
+            message: res.errors?.[0]?.message || 'Internal Server Error',
           })
+          return
         }
-      }
 
-      submitForm()
+        setHasSubmitted(true)
+
+        if (confirmationType === 'redirect' && redirect) {
+          router.push(redirect.url)
+        }
+      } catch (err) {
+        console.warn(err)
+        setIsLoading(false)
+        setError({
+          message: 'Something went wrong.',
+        })
+      }
     },
-    [router, formID, redirect, confirmationType],
+    [router, formID, confirmationType, redirect],
   )
 
   return (
@@ -134,9 +112,6 @@ export const FormBlock: React.FC<
       <div
         className={[classes.form, hasSubmitted && classes.hasSubmitted].filter(Boolean).join(' ')}
       >
-        {enableIntro && introContent && !hasSubmitted && (
-          <RichText className={classes.intro} content={introContent} />
-        )}
         {!isLoading && hasSubmitted && confirmationType === 'message' && (
           <RichText className={classes.confirmationMessage} content={confirmationMessage} />
         )}
@@ -145,15 +120,14 @@ export const FormBlock: React.FC<
         {!hasSubmitted && (
           <form id={formID} onSubmit={handleSubmit(onSubmit)}>
             <div className={classes.fieldWrap}>
-              {formFromProps &&
-                formFromProps.fields &&
-                formFromProps.fields.map((field, index) => {
-                  const Field: React.FC<any> = fields?.[field.blockType]
+              {formFields &&
+                formFields.map((field, index) => {
+                  const Field = fields?.[field.blockType]
                   if (Field) {
                     return (
                       <React.Fragment key={index}>
                         <Field
-                          form={formFromProps}
+                          form={form}
                           {...field}
                           {...formMethods}
                           register={register}
@@ -173,3 +147,5 @@ export const FormBlock: React.FC<
     </Gutter>
   )
 }
+
+export default Form

@@ -25,27 +25,29 @@ const Accordion = ({ accordion }) => {
       <Gutter>
         <h3 className={classes.faqHeader}>Frequently Asked Questions</h3>
         <ul className={classes.itineraryList}>
-          {accordion.slice(0, showAll ? accordion.length : visibleAccordions).map((item, index) => (
-            <li key={item.id}>
-              <button
-                className={`${classes.accordion} ${
-                  accordionActive === index ? classes.active : ''
-                }`}
-                onClick={() => handleClick(index)}
-              >
-                <span className={classes.icon}>
-                  {accordionActive === index ? <BsDash /> : <BsPlus />}{' '}
-                  {/* Render plus or minus icon */}
-                </span>
-                {item.Heading}
-              </button>
-              {accordionActive === index && (
-                <p className={classes.description}>{item.Description}</p>
-              )}
-            </li>
-          ))}
+          {accordion
+            ?.slice(0, showAll ? accordion.length : visibleAccordions)
+            .map((item, index) => (
+              <li key={item.id}>
+                <button
+                  className={`${classes.accordion} ${
+                    accordionActive === index ? classes.active : ''
+                  }`}
+                  onClick={() => handleClick(index)}
+                >
+                  <span className={classes.icon}>
+                    {accordionActive === index ? <BsDash /> : <BsPlus />}{' '}
+                    {/* Render plus or minus icon */}
+                  </span>
+                  {item.Heading}
+                </button>
+                {accordionActive === index && (
+                  <p className={classes.description}>{item.Description}</p>
+                )}
+              </li>
+            ))}
         </ul>
-        {accordion.length > visibleAccordions && !showAll && (
+        {accordion?.length > visibleAccordions && !showAll && (
           <button className={classes.expandButton} onClick={toggleShowAll}>
             Show More
           </button>

@@ -7,8 +7,8 @@ export const staticHome: Page = {
   createdAt: '',
   updatedAt: '',
   meta: {
-    title: 'Payload Website Template',
-    description: 'An open-source website built with Payload and Next.js.',
+    title: 'Berleen Safaris',
+    description: '404 page.',
   },
   hero: {
     type: 'lowImpact',
@@ -17,7 +17,7 @@ export const staticHome: Page = {
       {
         children: [
           {
-            text: 'Payload Website Template',
+            text: 'Oh deer! It seems weve hit a snag...',
           },
         ],
         type: 'h1',
@@ -28,49 +28,18 @@ export const staticHome: Page = {
             text: 'Welcome to your website! ',
           },
           {
-            text: 'Your database is currently empty.',
+            text: 'Looks like our website is on a safari of its own and got lost in the wilderness',
             bold: true,
           },
           {
-            text: ' To seed your database with a few pages, posts, and projects, ',
+            text: 'Our team of tech-savvy explorers is working fur-ociously to get things back on track!',
           },
           {
-            type: 'link',
-            linkType: 'custom',
-            url: '/admin',
-            children: [
-              {
-                text: 'log in to the admin dashboard',
-              },
-            ],
-          },
-          {
-            text: ' and click "seed your database". If you have already seeded your database, ',
-          },
-          {
-            text: 'you may need to hard refresh this page to clear the cached request.',
+            text: 'In the meantime, why not take a virtual hike through our social media jungle? Follow us for some wild updates and adorable animal antics!',
             bold: true,
           },
-        ],
-      },
-      {
-        children: [
           {
-            text: 'The code for this template is completely open-source and can be found ',
-          },
-          {
-            type: 'link',
-            linkType: 'custom',
-            url: 'https://github.com/payloadcms/payload/tree/main/templates/website',
-            newTab: true,
-            children: [
-              {
-                text: 'here',
-              },
-            ],
-          },
-          {
-            text: '.',
+            text: 'Remember, even the wildest adventures have a few unexpected twists and turns. We appreciate your patience as we navigate through this jungle of technical difficulties!',
           },
         ],
       },
@@ -83,7 +52,7 @@ export const staticHome: Page = {
         {
           children: [
             {
-              text: 'Seed your database',
+              text: '404',
             },
           ],
           type: 'h4',
@@ -91,20 +60,20 @@ export const staticHome: Page = {
         {
           children: [
             {
-              text: 'Your database is currently empty. To seed your database, ',
+              text: 'Connection to the server failed',
             },
             {
               type: 'link',
               linkType: 'custom',
-              url: '/admin',
+              url: '/home',
               children: [
                 {
-                  text: 'log in to the admin dashboard',
+                  text: 'Back To Homepage',
                 },
               ],
             },
             {
-              text: ' and click "seed your database".',
+              text: 'And click Refresh page".',
             },
           ],
         },
@@ -113,8 +82,8 @@ export const staticHome: Page = {
         {
           link: {
             type: 'custom',
-            url: '/admin',
-            label: 'Go to dashboard',
+            url: '/home',
+            label: 'Go to Homepage',
             appearance: 'primary',
             reference: null,
           },
@@ -124,4 +93,5 @@ export const staticHome: Page = {
       blockType: 'cta',
     },
   ],
+  Categories: [],
 }

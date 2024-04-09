@@ -127,7 +127,7 @@ function AddReview() {
               <Button
                 type="submit"
                 appearance="primary"
-                label={isLoading ? 'Processing' : 'Comment'}
+                label={isLoading ? 'Processing' : 'Add Review'}
                 disabled={isLoading}
                 className={classes.submit}
               />

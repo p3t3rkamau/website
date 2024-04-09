@@ -1,0 +1,58 @@
+@use '../../_css/queries.scss' as *;
+
+
+.form {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    @include small-break {
+        width: 100%;
+      }
+  }
+  
+  .formGroup {
+    margin-bottom: 20px;
+  }
+  
+  .label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  .input,
+  .textarea,
+  .select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #b88c5e;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .select {
+    appearance: none; /* Remove default arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+  }
+  
+  .submitButton {
+    background-color: #273238;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 20px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 3s ease;
+  
+  }
+  
+  .submitButton:hover {
+    background-color: #0056b3;
+  }
+  

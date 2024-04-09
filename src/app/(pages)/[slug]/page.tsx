@@ -11,10 +11,12 @@ import Accordion from '../../_components/Accordion'
 import { Blocks } from '../../_components/Blocks'
 // import Categories from '../../_components/Categories'
 import CardComponent from '../../_components/CategoryCard'
+import EnquiryForm from '../../_components/EnquiryForm'
 import { Hero } from '../../_components/Hero'
 import { HR } from '../../_components/HR'
 import Reviews from '../../_components/Reviews'
 import Testimonials from '../../_components/Testimonials'
+import SlidingHero from '../../_heros/SlidingHero'
 import { generateMeta } from '../../_utilities/generateMeta'
 
 import classes from './index.module.scss'
@@ -54,13 +56,18 @@ export default async function Page({ params: { slug = 'home' } }) {
     return notFound()
   }
 
-  const { hero, layout, Accordion: accordionData } = page
+  const { hero, layout, Accordion: accordionData, HighlightImages, Categories } = page
+  const noHighlightImages = !HighlightImages || HighlightImages.length === 0
+  const noCategories = !Categories || Categories.length === 0
+  const noAccordionData = !accordionData || accordionData.length === 0
 
   return (
     <React.Fragment>
       <Hero {...hero} />
+      {slug === 'contact-us' && <EnquiryForm />}
+      {!noHighlightImages && <SlidingHero slidingImages={HighlightImages} />}
       <HR />
-      <CardComponent categories={page.Categories} />
+      {!noCategories && <CardComponent categories={Categories} />}
       <HR />
       <Blocks
         blocks={layout}
@@ -71,7 +78,7 @@ export default async function Page({ params: { slug = 'home' } }) {
       <Testimonials />
       <Reviews />
       <HR />
-      <Accordion accordion={accordionData} />
+      {!noAccordionData && <Accordion accordion={accordionData} />}
     </React.Fragment>
   )
 }

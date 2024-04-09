@@ -33,7 +33,6 @@ export const PAGE = `
           ${CONTENT}
           ${MEDIA_BLOCK}
           ${ARCHIVE_BLOCK}
-          
         }
         ${META}
         Categories{
@@ -48,6 +47,14 @@ export const PAGE = `
           Heading
           Description
 
+        }
+        HighlightImages {
+          title
+          media {
+            imagekit {
+              url
+            }
+          }
         }
       }
     }

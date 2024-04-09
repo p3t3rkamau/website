@@ -43,6 +43,7 @@ export const FORM_FIELDS = `{
         }
    }
    confirmationType
+   submitButtonLabel
    confirmationMessage
    redirect {
     url

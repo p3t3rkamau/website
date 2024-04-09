@@ -54,6 +54,12 @@ export interface Page {
           id?: string | null;
         }[]
       | null;
+    DescriptionImages?:
+      | {
+          media: string | Media;
+          id?: string | null;
+        }[]
+      | null;
     media?: string | Media | null;
   };
   layout: (
@@ -168,6 +174,13 @@ export interface Page {
       }
   )[];
   slug?: string | null;
+  HighlightImages?:
+    | {
+        media: string | Media;
+        title: string;
+        id?: string | null;
+      }[]
+    | null;
   Categories: (string | Category)[];
   Accordion?:
     | {
@@ -242,6 +255,12 @@ export interface Post {
             icon?: string | Media | null;
             appearance?: ('default' | 'primary' | 'secondary') | null;
           };
+          id?: string | null;
+        }[]
+      | null;
+    DescriptionImages?:
+      | {
+          media: string | Media;
           id?: string | null;
         }[]
       | null;
@@ -397,9 +416,9 @@ export interface Post {
 }
 export interface Project {
   id: string;
+  title: string;
   Days: string;
   Price: number;
-  title: string;
   categories?: (string | Category)[] | null;
   publishedAt?: string | null;
   hero: {
@@ -421,6 +440,12 @@ export interface Project {
             icon?: string | Media | null;
             appearance?: ('default' | 'primary' | 'secondary') | null;
           };
+          id?: string | null;
+        }[]
+      | null;
+    DescriptionImages?:
+      | {
+          media: string | Media;
           id?: string | null;
         }[]
       | null;
@@ -691,7 +716,6 @@ export interface Form {
 export interface Review {
   id: string;
   user?: (string | null) | User;
-  review?: string | null;
   name?: string | null;
   message?: string | null;
   rating: '0' | '0.5' | '1' | '1.5' | '2' | '2.5' | '3' | '3.5' | '4' | '4.5' | '5';
