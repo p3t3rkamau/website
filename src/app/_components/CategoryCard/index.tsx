@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 // import { Gutter } from '../Gutter'
 import classes from './index.module.scss'
@@ -11,15 +12,17 @@ const CardComponent = ({ categories }) => {
       <div className={classes.CardComponent}>
         {categories?.map(category => (
           <div className={classes.card} key={category.title}>
-            {category.media && category.media.imagekit && (
-              <Image
-                src={category.media.imagekit.url}
-                width={200}
-                height={200}
-                alt={category.title}
-                className={classes.image}
-              />
-            )}
+            <Link href="/posts" passHref>
+              {category.media && category.media.imagekit && (
+                <Image
+                  src={category.media.imagekit.url}
+                  width={200}
+                  height={200}
+                  alt={category.title}
+                  className={classes.image}
+                />
+              )}
+            </Link>
             <h5>{category.title}</h5>
           </div>
         ))}
